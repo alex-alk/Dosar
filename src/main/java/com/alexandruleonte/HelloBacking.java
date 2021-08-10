@@ -1,7 +1,7 @@
 package com.alexandruleonte;
 
-import jakarta.enterprise.context.RequestScoped;
-import jakarta.inject.Named;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 
 @Named
 @RequestScoped
