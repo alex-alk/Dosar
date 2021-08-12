@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE xml>
 <web-app xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
     xmlns="https://java.sun.com/xml/ns/javaee"
     xsi:schemaLocation="https://xmlns.jcp.org/xml/ns/javaee
@@ -31,4 +30,14 @@
     <welcome-file-list>
         <welcome-file>home</welcome-file>
     </welcome-file-list>
+
+    <data-source>
+        <name>java:global/ds</name>
+        <class-name>com.mysql.jdbc.jdbc2.optional.MysqlXADataSource</class-name>
+        <server-name>localhost</server-name>
+        <port-number>3306</port-number>
+        <database-name>dosar</database-name>
+        <user>root</user>
+        <password>Ewsdew_01</password>
+    </data-source>
 </web-app>

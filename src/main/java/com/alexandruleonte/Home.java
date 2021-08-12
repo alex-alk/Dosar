@@ -1,14 +1,22 @@
 package com.alexandruleonte;
 
+import com.alexandruleonte.entities.Platform;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
+import javax.persistence.*;
 
 @Named
 @RequestScoped
 public class Home {
 
-    public String getHello() {
-        return "Hello world, from JSF!";
-    }
+    @PersistenceContext(unitName = "default")
+    private EntityManager em;
 
+    public String getHello() {
+
+        Platform p1 = em.find(Platform.class, 1);
+
+        return p1.getName();
+    }
 }
