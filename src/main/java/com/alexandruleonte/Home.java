@@ -15,7 +15,6 @@ public class Home {
 
     public String getHello() {
         Platform p1 = em.find(Platform.class, 1);
-        em.close();
         return p1.getName();
     }
 }
