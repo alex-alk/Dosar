@@ -30,14 +30,4 @@
     <welcome-file-list>
         <welcome-file>home</welcome-file>
     </welcome-file-list>
-
-    <data-source>
-        <name>java:global/ds</name>
-        <class-name>com.mysql.cj.jdbc.MysqlDataSource</class-name>
-        <server-name>127.0.0.1</server-name>
-        <port-number>3306</port-number>
-        <database-name>dosar</database-name>
-        <user>root</user>
-        <password>Ewsdew_01</password>
-    </data-source>
 </web-app>
