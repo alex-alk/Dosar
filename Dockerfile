@@ -1,2 +1,4 @@
-FROM airhacks/glassfish
-COPY ./target/Dosar.war ${DEPLOYMENT_DIR}
+FROM payara/micro
+COPY target/Dosar.war $DEPLOY_DIR
+COPY dbc.jar $PAYARA_HOME
+
