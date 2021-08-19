@@ -10,12 +10,11 @@ import javax.persistence.*;
 @RequestScoped
 public class Home {
 
-//    @PersistenceContext(unitName = "default")
-//    EntityManager em;
+    @PersistenceContext(unitName = "default")
+    EntityManager em;
 
     public String getHello() {
-//        Platform p1 = em.find(Platform.class, 1);
-//        return p1.getName();
-        return "OK";
+        Platform p1 = em.find(Platform.class, 1);
+        return p1.getName();
     }
 }
