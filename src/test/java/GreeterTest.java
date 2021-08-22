@@ -66,7 +66,6 @@ public class GreeterTest {
 
         Platform game = new Platform();
         game.setName("a");
-        game.setContent("b");
         em.persist(game);
 
         utx.commit();
