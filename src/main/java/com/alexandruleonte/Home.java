@@ -10,7 +10,7 @@ import javax.persistence.*;
 @RequestScoped
 public class Home {
 
-    @PersistenceContext(unitName = "default")
+    @PersistenceContext(name = "default")
     EntityManager em;
 
     public String getHello() {

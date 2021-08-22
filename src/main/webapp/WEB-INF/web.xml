@@ -30,30 +30,4 @@
     <welcome-file-list>
         <welcome-file>home</welcome-file>
     </welcome-file-list>
-<!--
-    <data-source>
-        <name>java:global/ds</name>
-        <class-name>com.mysql.cj.jdbc.MysqlDataSource</class-name>
-        <url>jdbc:mysql://localhost:3306/dosar</url>
-        <server-name>localhost</server-name>
-        <port-number>3306</port-number>
-        <database-name>mysql</database-name>
-        <user>root</user>
-        <password>Ewsdew_01</password>
-
-        <property>
-            <name>fish.payara.ping</name>
-            <value>true</value>
-        </property>
-
-        <property>
-            <name>fish.payara.useSSL</name>
-            <value>false</value>
-        </property>
-        <property>
-            <name>fish.payara.allowPublicKeyRetrieval</name>
-            <value>false</value>
-        </property>
-    </data-source>
-    -->
 </web-app>
