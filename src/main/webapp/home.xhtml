@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
     <title>Hello</title>
@@ -9,10 +10,15 @@
 
 <h:body>
     <p>
-        JSF says:
+        JSF sayss:
     </p>
-    <p>
-        <b>#{home.hello}</b>
-    </p>
+    <ui:repeat value="#{home.platforms}" var="platform">
+        <b>#{platform.name}</b><br />
+        <ul>
+            <ui:repeat value="#{platform.chapters}" var="chapter">
+                <li><b>#{chapter.name}</b></li>
+            </ui:repeat>
+        </ul>
+    </ui:repeat>
 </h:body>
 </html>

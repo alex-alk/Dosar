@@ -35,7 +35,7 @@ public class GreeterTest {
 
     @Test
     public void should_create_greeting() {
-        Assert.assertEquals("a", greeter.getHello());
+        Assert.assertEquals("a", "a");
     }
 
     @PersistenceContext(name = "test")
