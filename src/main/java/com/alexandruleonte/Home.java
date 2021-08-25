@@ -3,6 +3,7 @@ package com.alexandruleonte;
 import com.alexandruleonte.entities.Chapter;
 import com.alexandruleonte.entities.Platform;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.persistence.*;
@@ -16,6 +17,8 @@ public class Home {
     @PersistenceContext(name = "default")
     EntityManager em;
 
+    private Platform platform = new Platform();
+
     public List<Platform> getPlatforms() {
         return em.createNamedQuery(Platform.GET_PLATFORMS, Platform.class).getResultList();
     }
@@ -23,5 +26,17 @@ public class Home {
     public Collection<Chapter> getChapters() {
         Platform p1 = em.find(Platform.class, 1);
         return p1.getChapters();
+    }
+
+    public Platform getPlatform() {
+        return platform;
+    }
+
+    public void setPlatform() {
+
+    }
+
+    public String save(Platform platform) {
+        return "a";
     }
 }
