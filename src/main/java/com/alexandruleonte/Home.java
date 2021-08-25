@@ -17,7 +17,7 @@ public class Home {
     @PersistenceContext(name = "default")
     EntityManager em;
 
-    private Platform platform = new Platform();
+    private final Platform platform = new Platform();
 
     public List<Platform> getPlatforms() {
         return em.createNamedQuery(Platform.GET_PLATFORMS, Platform.class).getResultList();
@@ -32,11 +32,8 @@ public class Home {
         return platform;
     }
 
-    public void setPlatform() {
-
-    }
 
     public String save(Platform platform) {
-        return "a";
+        return "home";
     }
 }
