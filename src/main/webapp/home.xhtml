@@ -17,6 +17,11 @@
         <ul>
             <ui:repeat value="#{platform.chapters}" var="chapter">
                 <li><b>#{chapter.name}</b></li>
+                <ul>
+                    <ui:repeat value="#{chapter.content}" var="chapterContent">
+                        <li><b>#{chapterContent.content}</b></li>
+                    </ui:repeat>
+                </ul>
             </ui:repeat>
         </ul>
     </ui:repeat>
@@ -24,7 +29,7 @@
         <b>Add platform</b>
         <h:form>
             <h:inputText value="#{home.platform.name}" />
-            <h:commandButton value="Submit" action="#{home.save(platform)}" />
+            <h:commandButton value="Submit" action="#{home.save(home.platform)}" />
         </h:form>
     </div>
 </h:body>

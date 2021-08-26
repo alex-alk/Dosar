@@ -19,7 +19,6 @@ public class Platform {
     private Collection<Chapter> chapters = new ArrayList<>();
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     Integer id;
 
     @NotNull

@@ -16,7 +16,7 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
 
 @RunWith(Arquillian.class)
-public class GreeterTest {
+public class Greeter {
 
     @Inject
     Home greeter;

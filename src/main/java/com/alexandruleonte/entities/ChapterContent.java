@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Collection;
 
 @Entity
-@Table(name = "chapters")
+@Table(name = "chapter_content")
 public class ChapterContent {
 
     @Id
@@ -13,13 +13,32 @@ public class ChapterContent {
     Integer id;
 
     @NotNull
-    private String name;
+    private String content;
 
-    public String getName() {
-        return name;
+    @ManyToOne
+    @JoinColumn(name = "CHAPTER_ID")
+    private Chapter chapter;
+
+    public Integer getId() {
+        return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+    public Chapter getChapter() {
+        return chapter;
+    }
+
+    public void setChapter(Chapter chapter) {
+        this.chapter = chapter;
     }
 }

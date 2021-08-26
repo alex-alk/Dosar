@@ -18,7 +18,7 @@ public class Chapter {
     @JoinColumn(name = "PLATFORM_ID")
     private Platform platform;
 
-    @OneToMany
+    @OneToMany(mappedBy = "chapter")
     private Collection<ChapterContent> content = new ArrayList<>();
 
     @NotEmpty(message = "Name must be set")

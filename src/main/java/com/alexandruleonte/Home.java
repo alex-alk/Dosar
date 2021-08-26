@@ -7,11 +7,13 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import java.util.Collection;
 import java.util.List;
 
 @Named
 @RequestScoped
+@Transactional
 public class Home {
     //todo: add only jar to container
     @PersistenceContext(name = "default")
@@ -20,6 +22,7 @@ public class Home {
     private final Platform platform = new Platform();
 
     public List<Platform> getPlatforms() {
+        em.getEntityManagerFactory().getCache().evictAll();
         return em.createNamedQuery(Platform.GET_PLATFORMS, Platform.class).getResultList();
     }
 
@@ -34,6 +37,7 @@ public class Home {
 
 
     public String save(Platform platform) {
+        em.persist(platform);
         return "home";
     }
 }
