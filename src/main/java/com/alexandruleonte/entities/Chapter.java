@@ -11,10 +11,9 @@ import java.util.Collection;
 public class Chapter {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     Integer id;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "PLATFORM_ID")
     private Platform platform;
 
@@ -46,5 +45,13 @@ public class Chapter {
 
     public void setPlatform(Platform platform) {
         this.platform = platform;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

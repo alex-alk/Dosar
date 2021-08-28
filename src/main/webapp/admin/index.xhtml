@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>Hello</title>
+</h:head>
+
+<h:body>
+    <p>
+        Admin:
+    </p>
+    <ui:repeat value="#{home.platforms}" var="platform">
+        <b>#{platform.name}</b><br />
+        <ul>
+            <ui:repeat value="#{platform.chapters}" var="chapter">
+                <li><b>#{chapter.name}</b></li>
+                <ul>
+                    <ui:repeat value="#{chapter.content}" var="chapterContent">
+                        <li><b>#{chapterContent.content}</b></li>
+                    </ui:repeat>
+                </ul>
+            </ui:repeat>
+        </ul>
+    </ui:repeat>
+    <div style="margin-top: 50px">
+        <b>Add platform</b>
+        <h:form>
+            <h:inputText value="#{home.platform.name}" />
+            <h:commandButton value="Submit" action="#{home.save(home.platform)}" />
+        </h:form>
+    </div>
+    <div>
+        <b>Add chapter</b>
+        <h:form>
+            <h:selectOneMenu value="#{home.platform.id}">
+                <f:selectItems value="#{home.platforms}" var="n" itemValue="#{n.id}" itemLabel="#{n.name}" />
+            </h:selectOneMenu>
+            <h:inputText value="#{home.chapter.name}" />
+            <h:commandButton value="Submit" action="#{home.saveChapter(home.chapter, home.platform.id)}" />
+        </h:form>
+    </div>
+    <div>
+        <b>Add chapter content</b>
+        <h:form>
+            <h:selectOneMenu value="#{home.chapter.id}">
+                <f:selectItems value="#{home.chapters}" var="n" itemValue="#{n.id}" itemLabel="#{n.name}" />
+            </h:selectOneMenu>
+            <h:inputText value="#{home.chapterContent.content}" />
+            <h:commandButton value="Submit" action="#{home.saveChapterContent(home.chapterContent, home.chapter.id)}" />
+        </h:form>
+    </div>
+</h:body>
+</html>

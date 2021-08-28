@@ -1,6 +1,7 @@
 package com.alexandruleonte;
 
 import com.alexandruleonte.entities.Chapter;
+import com.alexandruleonte.entities.ChapterContent;
 import com.alexandruleonte.entities.Platform;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -20,6 +21,8 @@ public class Home {
     EntityManager em;
 
     private final Platform platform = new Platform();
+    private final Chapter chapter = new Chapter();
+    private final ChapterContent chapterContent = new ChapterContent();
 
     public List<Platform> getPlatforms() {
         em.getEntityManagerFactory().getCache().evictAll();
@@ -34,10 +37,32 @@ public class Home {
     public Platform getPlatform() {
         return platform;
     }
+    public Chapter getChapter() {
+        return chapter;
+    }
+    public ChapterContent getChapterContent() {
+        return chapterContent;
+    }
 
 
     public String save(Platform platform) {
         em.persist(platform);
         return "home";
+    }
+
+    public String saveChapter(Chapter chapter, int platformId) {
+
+        Platform platform = em.find(Platform.class, platformId);
+        chapter.setPlatform(platform);
+        em.persist(chapter);
+        return "/admin/index?faces-redirect=true";
+    }
+
+    public String saveChapterContent(ChapterContent chapterContent, int chapterId) {
+
+        Chapter chapter = em.find(Chapter.class, chapterId);
+        chapterContent.setChapter(chapter);
+        em.persist(chapterContent);
+        return "/admin/index?faces-redirect=true";
     }
 }

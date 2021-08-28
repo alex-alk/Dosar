@@ -9,7 +9,6 @@ import java.util.Collection;
 public class ChapterContent {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     Integer id;
 
     @NotNull
