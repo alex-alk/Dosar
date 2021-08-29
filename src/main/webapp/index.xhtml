@@ -25,12 +25,6 @@
             </ui:repeat>
         </ul>
     </ui:repeat>
-    <div style="margin-top: 50px">
-        <b>Add platform</b>
-        <h:form>
-            <h:inputText value="#{home.platform.name}" />
-            <h:commandButton value="Submit" action="#{home.save(home.platform)}" />
-        </h:form>
-    </div>
+    <h:link value="Admin page" outcome="/admin/index" />
 </h:body>
 </html>

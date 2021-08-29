@@ -51,7 +51,6 @@ public class Home {
     }
 
     public String saveChapter(Chapter chapter, int platformId) {
-
         Platform platform = em.find(Platform.class, platformId);
         chapter.setPlatform(platform);
         em.persist(chapter);
@@ -59,7 +58,6 @@ public class Home {
     }
 
     public String saveChapterContent(ChapterContent chapterContent, int chapterId) {
-
         Chapter chapter = em.find(Chapter.class, chapterId);
         chapterContent.setChapter(chapter);
         em.persist(chapterContent);
