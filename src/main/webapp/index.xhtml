@@ -10,9 +10,9 @@
 
 <h:body>
     <p>
-        JSF HOME:
+        Dosar
     </p>
-    <ui:repeat value="#{home.platforms}" var="platform">
+    <ui:repeat value="#{homeController.platforms}" var="platform">
         <b>#{platform.name}</b><br />
         <ul>
             <ui:repeat value="#{platform.chapters}" var="chapter">
