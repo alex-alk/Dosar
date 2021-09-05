@@ -112,7 +112,7 @@ main {
         </a>
         <ul class="list-unstyled ps-0">
 
-            <ui:repeat value="#{homeController.platforms}" var="platform">
+            <ui:repeat value="#{platformDao.platforms}" var="platform">
             <li class="mb-1">
                 <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse-#{platform.id}" aria-expanded="false">
                     #{platform.name}

@@ -1,4 +1,4 @@
-import com.alexandruleonte.HomeController;
+import com.alexandruleonte.dao.PlatformDao;
 import com.alexandruleonte.entities.Platform;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -19,12 +19,12 @@ import javax.transaction.UserTransaction;
 public class Greeter {
 
     @Inject
-    HomeController greeter;
+    PlatformDao greeter;
 
     @Deployment
     public static WebArchive createDeployment() {
         WebArchive war = ShrinkWrap.create(WebArchive.class, "ROOT.war")
-                .addPackage(HomeController.class.getPackage())
+                .addPackage(PlatformDao.class.getPackage())
                 .addPackage(Platform.class.getPackage())
                 .addAsResource("META-INF/microprofile-config.properties")
                 .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")

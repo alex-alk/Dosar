@@ -10,16 +10,13 @@ import com.alexandruleonte.entities.Platform;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
 
 @Named
 @RequestScoped
-public class HomeController {
+public class AdminHomeController {
     //todo: add only jar to container
-    @PersistenceContext(name = "default")
-    EntityManager em;
 
     @Inject
     PlatformDao platformDao;
@@ -31,14 +28,6 @@ public class HomeController {
     private final Platform platform = new Platform();
     private final Chapter chapter = new Chapter();
     private final ChapterContent chapterContent = new ChapterContent();
-
-    public List<Platform> getPlatforms() {
-        return platformDao.getPlatforms();
-    }
-
-    public Collection<Chapter> getChapters() {
-        return chapterDao.getChapters();
-    }
 
     public Platform getPlatform() {
         return platform;

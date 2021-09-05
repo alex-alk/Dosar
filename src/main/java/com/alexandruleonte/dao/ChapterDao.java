@@ -4,11 +4,13 @@ import com.alexandruleonte.entities.Chapter;
 import com.alexandruleonte.entities.Platform;
 
 import javax.ejb.Stateless;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.Collection;
 
 @Stateless
+@Named
 public class ChapterDao {
 
     @PersistenceContext(name = "default")
