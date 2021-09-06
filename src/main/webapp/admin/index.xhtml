@@ -6,9 +6,9 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <h:head>
-    <title>Hello</title>
+    <ui:include src="../header.xhtml" />
+    <link href="../css/summernote-bs4.min.css" rel="stylesheet" />
 </h:head>
-
 <h:body>
     <p>
         Admin Dashboard
@@ -16,29 +16,38 @@
     <div style="margin-top: 50px">
         <b>Add platform</b>
         <h:form>
-            <h:inputText value="#{adminHomeController.platform.name}" />
-            <h:commandButton value="Submit" action="#{adminHomeController.save(adminHomeController.platform)}" />
+            <h:inputText value="#{adminHomeBean.platform.name}" />
+            <h:commandButton value="Submit" action="#{platformDao.save(adminHomeBean.platform)}" />
         </h:form>
     </div>
     <div>
         <b>Add chapter</b>
         <h:form>
-            <h:selectOneMenu value="#{adminHomeController.platform.id}">
+            <h:selectOneMenu value="#{adminHomeBean.platform.id}">
                 <f:selectItems value="#{platformDao.platforms}" var="n" itemValue="#{n.id}" itemLabel="#{n.name}" />
             </h:selectOneMenu>
-            <h:inputText value="#{adminHomeController.chapter.name}" />
-            <h:commandButton value="Submit" action="#{adminHomeController.saveChapter(home.chapter, adminHomeController.platform.id)}" />
+            <h:inputText value="#{adminHomeBean.chapter.name}" />
+            <h:commandButton value="Submit" action="#{chapterDao.saveChapter(adminHomeBean.chapter, adminHomeBean.platform.id)}" />
         </h:form>
     </div>
     <div>
         <b>Add chapter content</b>
-        <h:form>
-            <h:selectOneMenu value="#{adminHomeController.chapter.id}">
+        <h:form id="form-chapter">
+            <h:selectOneMenu value="#{adminHomeBean.chapter.id}">
                 <f:selectItems value="#{chapterDao.chapters}" var="n" itemValue="#{n.id}" itemLabel="#{n.name}" />
             </h:selectOneMenu>
-            <h:inputText value="#{adminHomeController.chapterContent.content}" />
-            <h:commandButton value="Submit" action="#{home.saveChapterContent(adminHomeController.chapterContent, adminHomeController.chapter.id)}" />
+            <h:inputTextarea id="summernote" value="#{adminHomeBean.chapterContent.content}" />
+
+            <h:commandButton value="Submit" action="#{chapterContentDao.saveChapterContent(adminHomeBean.chapterContent, adminHomeBean.chapter.id)}" />
         </h:form>
     </div>
+
+    <ui:include src="../footer.xhtml" />
+    <script src="../js/summernote-bs4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#form-chapter-summernote').summernote();
+        });
+    </script>
 </h:body>
 </html>

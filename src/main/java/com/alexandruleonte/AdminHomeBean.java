@@ -15,7 +15,7 @@ import java.util.List;
 
 @Named
 @RequestScoped
-public class AdminHomeController {
+public class AdminHomeBean {
     //todo: add only jar to container
 
     @Inject
