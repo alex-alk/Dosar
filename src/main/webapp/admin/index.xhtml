@@ -12,23 +12,6 @@
 <h:body>
     <ui:include src="sidebar.xhtml" />
 
-    <div style="margin-top: 50px">
-        <b>Add platform</b>
-        <h:form>
-            <h:inputText value="#{adminHomeBean.platform.name}" />
-            <h:commandButton value="Submit" action="#{platformDao.save(adminHomeBean.platform)}" />
-        </h:form>
-    </div>
-    <div>
-        <b>Add chapter</b>
-        <h:form>
-            <h:selectOneMenu value="#{adminHomeBean.platform.id}">
-                <f:selectItems value="#{platformDao.platforms}" var="n" itemValue="#{n.id}" itemLabel="#{n.name}" />
-            </h:selectOneMenu>
-            <h:inputText value="#{adminHomeBean.chapter.name}" />
-            <h:commandButton value="Submit" action="#{chapterDao.saveChapter(adminHomeBean.chapter, adminHomeBean.platform.id)}" />
-        </h:form>
-    </div>
     <div>
         <b>Add chapter content</b>
         <h:form id="form-chapter">

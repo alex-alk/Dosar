@@ -1,9 +1,10 @@
 <ui:composition
         xmlns="http://www.w3.org/1999/xhtml"
         xmlns:h="http://xmlns.jcp.org/jsf/html"
-        xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
-    <aside>
+    <aside class="bd-sidebar">
         <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
             <a href="/admin/index" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
                 <span class="fs-5 fw-semibold">Admin Dashboard</span>
@@ -13,11 +14,22 @@
                     <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#a" aria-expanded="false">
                         Platforms
                     </button>
-                    <div class="collapse" id="a" style="">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><h:link value="Add platform" outcome="/admin/platform/create.xhtml" class="link-dark rounded" /></li>
-                        </ul>
-                    </div>
+                    <c:choose>
+                        <c:when test="#{request.requestURI=='/admin/platform/create'}">
+                            <div class="collapse show" id="a">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li><h:link value="Add platform" outcome="/admin/platform/create.xhtml" class="link-dark rounded active" /></li>
+                                </ul>
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="collapse" id="a">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li><h:link value="Add platform" outcome="/admin/platform/create.xhtml" class="link-dark rounded" /></li>
+                                </ul>
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
                 </li>
 
                 <li class="mb-1">
@@ -26,7 +38,7 @@
                     </button>
                     <div class="collapse" id="b" style="">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="#" class="link-dark rounded">Add chapter</a></li>
+                            <li><a href="/admin/chapter/create.xhtml" class="link-dark rounded">Add chapter</a></li>
                         </ul>
                     </div>
                 </li>
