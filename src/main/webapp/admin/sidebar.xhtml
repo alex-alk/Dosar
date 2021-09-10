@@ -11,45 +11,34 @@
             </a>
             <ul class="list-unstyled ps-0">
                 <li class="mb-1">
-                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#a" aria-expanded="false">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#add-platform" aria-expanded="false">
                         Platforms
                     </button>
-                    <c:choose>
-                        <c:when test="#{request.requestURI=='/admin/platform/create'}">
-                            <div class="collapse show" id="a">
-                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                    <li><h:link value="Add platform" outcome="/admin/platform/create.xhtml" class="link-dark rounded active" /></li>
-                                </ul>
-                            </div>
-                        </c:when>
-                        <c:otherwise>
-                            <div class="collapse" id="a">
-                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                    <li><h:link value="Add platform" outcome="/admin/platform/create.xhtml" class="link-dark rounded" /></li>
-                                </ul>
-                            </div>
-                        </c:otherwise>
-                    </c:choose>
-                </li>
-
-                <li class="mb-1">
-                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#b" aria-expanded="false">
-                        Chapters
-                    </button>
-                    <div class="collapse" id="b" style="">
+                    <div class="collapse" id="add-platform">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="/admin/chapter/create.xhtml" class="link-dark rounded">Add chapter</a></li>
+                            <li><h:link value="Add platform" outcome="/admin/platform/create.xhtml" class="link-dark rounded" /></li>
                         </ul>
                     </div>
                 </li>
 
                 <li class="mb-1">
-                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#c" aria-expanded="false">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#add-chapter" aria-expanded="false">
+                        Chapters
+                    </button>
+                    <div class="collapse" id="add-chapter">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><h:link value="Add chapter" outcome="/admin/chapter/create.xhtml" class="link-dark rounded" /></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="mb-1">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#add-chapter_content" aria-expanded="false">
                         Chapter contents
                     </button>
-                    <div class="collapse" id="c" style="">
+                    <div class="collapse" id="add-chapter_content">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="#" class="link-dark rounded">Add chapter content</a></li>
+                            <li><h:link value="Add chapter content" outcome="/admin/chapter_content/create.xhtml" class="link-dark rounded" /></li>
                         </ul>
                     </div>
                 </li>

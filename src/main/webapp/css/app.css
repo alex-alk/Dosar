@@ -9,3 +9,7 @@
 aside .active {
     font-weight: bold;
 }
+
+.note-frame {
+    max-width: 750px;
+}
