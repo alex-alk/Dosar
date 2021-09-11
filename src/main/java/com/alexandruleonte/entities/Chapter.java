@@ -8,7 +8,10 @@ import java.util.Collection;
 
 @Entity
 @Table(name = "chapters")
+@NamedQuery(name = Chapter.GET_CHAPTERS, query = "select c from Chapter c")
 public class Chapter {
+
+    public static final String GET_CHAPTERS = "Chapter.getAll";
 
     @Id
     Integer id;
@@ -17,11 +20,11 @@ public class Chapter {
     @JoinColumn(name = "PLATFORM_ID")
     private Platform platform;
 
-    @OneToMany(mappedBy = "chapter")
-    private Collection<ChapterContent> content = new ArrayList<>();
-
     @NotEmpty(message = "Name must be set")
     private String name;
+
+    @NotNull
+    private String content;
 
     public String getName() {
         return name;
@@ -29,14 +32,6 @@ public class Chapter {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Collection<ChapterContent> getContent() {
-        return content;
-    }
-
-    public void setContent(Collection<ChapterContent> content) {
-        this.content = content;
     }
 
     public Platform getPlatform() {
@@ -53,5 +48,12 @@ public class Chapter {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getContent() {
+        return content;
+    }
+    public void setContent(String content) {
+        this.content = content;
     }
 }

@@ -11,7 +11,7 @@
             </a>
             <ul class="list-unstyled ps-0">
                 <li class="mb-1">
-                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#add-platform" aria-expanded="false">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" id="add-platform-btn" data-bs-target="#add-platform" aria-expanded="false">
                         Platforms
                     </button>
                     <div class="collapse" id="add-platform">
@@ -22,23 +22,12 @@
                 </li>
 
                 <li class="mb-1">
-                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#add-chapter" aria-expanded="false">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" id="add-chapter-btn" data-bs-target="#add-chapter" aria-expanded="false">
                         Chapters
                     </button>
                     <div class="collapse" id="add-chapter">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                             <li><h:link value="Add chapter" outcome="/admin/chapter/create.xhtml" class="link-dark rounded" /></li>
-                        </ul>
-                    </div>
-                </li>
-
-                <li class="mb-1">
-                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#add-chapter_content" aria-expanded="false">
-                        Chapter contents
-                    </button>
-                    <div class="collapse" id="add-chapter_content">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><h:link value="Add chapter content" outcome="/admin/chapter_content/create.xhtml" class="link-dark rounded" /></li>
                         </ul>
                     </div>
                 </li>

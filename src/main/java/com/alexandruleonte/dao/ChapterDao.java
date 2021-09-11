@@ -17,13 +17,16 @@ public class ChapterDao {
     EntityManager em;
 
     public Collection<Chapter> getChapters() {
-        Platform p1 = em.find(Platform.class, 1);
-        return p1.getChapters();
+        return em.createNamedQuery(Chapter.GET_CHAPTERS, Chapter.class).getResultList();
     }
 
     public void saveChapter(Chapter chapter, int platformId) {
         Platform platform = em.find(Platform.class, platformId);
         chapter.setPlatform(platform);
         em.persist(chapter);
+    }
+
+    public Chapter getChapter(int id) {
+        return em.find(Chapter.class, id);
     }
 }

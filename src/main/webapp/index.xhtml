@@ -5,29 +5,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <ui:include src="header.xhtml" />
     <h:body>
-    <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
-        <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
-            <span class="fs-5 fw-semibold">Dosar</span>
-        </a>
-        <ul class="list-unstyled ps-0">
-
-            <ui:repeat value="#{platformDao.platforms}" var="platform">
-            <li class="mb-1">
-                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse-#{platform.id}" aria-expanded="false">
-                    #{platform.name}
-                </button>
-                <div class="collapse" id="home-collapse-#{platform.id}" style="">
-                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <ui:repeat value="#{platform.chapters}" var="chapter">
-                            <li><a href="#" class="link-dark rounded">#{chapter.name}</a></li>
-                        </ui:repeat>
-
-                    </ul>
-                </div>
-            </li>
-            </ui:repeat>
-        </ul>
-    </div>
+    <ui:include src="sidebar.xhtml" />
     <ui:include src="footer.xhtml" />
     </h:body>
 </html>

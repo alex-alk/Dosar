@@ -1,0 +1,32 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <aside class="bd-sidebar">
+        <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+            <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+                <span class="fs-5 fw-semibold">Dosar</span>
+            </a>
+            <ul class="list-unstyled ps-0">
+
+                <ui:repeat value="#{platformDao.platforms}" var="platform">
+                    <li class="mb-1">
+                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse-#{platform.id}" id="btn-collapse-#{platform.id}" aria-expanded="false">
+                            #{platform.name}
+                        </button>
+                        <div class="collapse" id="home-collapse-#{platform.id}">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                <ui:repeat value="#{platform.chapters}" var="chapter">
+                                    <li><a href="/chapter/index?id=#{chapter.id}&amp;platform=#{chapter.platform.id}" id="chapter-link-#{chapter.id}" class="link-dark rounded">#{chapter.name}</a></li>
+                                </ui:repeat>
+
+                            </ul>
+                        </div>
+                    </li>
+                </ui:repeat>
+            </ul>
+        </div>
+    </aside>
+</ui:composition>
