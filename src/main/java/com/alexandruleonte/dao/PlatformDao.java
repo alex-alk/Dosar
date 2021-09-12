@@ -1,5 +1,6 @@
 package com.alexandruleonte.dao;
 
+import com.alexandruleonte.entities.Chapter;
 import com.alexandruleonte.entities.Platform;
 
 import javax.ejb.Stateless;
@@ -20,5 +21,18 @@ public class PlatformDao {
 
     public void save(Platform platform) {
         em.persist(platform);
+    }
+
+    public void update(Platform platform) {
+        em.merge(platform);
+    }
+
+    public void delete(Platform platform) {
+        platform = em.merge(platform);
+        em.remove(platform);
+    }
+
+    public Platform getPlatform(int id) {
+        return em.find(Platform.class, id);
     }
 }

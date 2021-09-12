@@ -12,22 +12,19 @@
     <ui:include src="../sidebar.xhtml" />
 
     <div class="page-content">
-        <h1 class="page-title">Add chapter</h1>
-        <h:form id="form-chapter" method="POST">
-            Platform: <h:selectOneMenu value="#{adminHomeBean.platform.id}" class="mb-4">
-                <f:selectItems value="#{platformDao.platforms}" var="n" itemValue="#{n.id}" itemLabel="#{n.name}" />
-            </h:selectOneMenu>
-            <div class="form-group mb-4">
-                Name: <h:inputText value="#{adminHomeBean.chapter.name}" />
+        <h1 class="page-title">Edit chapter</h1>
+        <h:form class="row g-3" id="form-chapter">
+            <div class="col-auto">
+                <h:inputText class="form-control" value="#{adminHomeBean.chapterEdit.name}" />
             </div>
-            <h:inputTextarea id="summernote" value="#{adminHomeBean.chapter.content}" />
-
-            <h:commandButton class="btn btn-primary" value="Submit" action="#{adminHomeBean.saveChapter(adminHomeBean.chapter, adminHomeBean.platform.id)}" />
+            <div class="col-auto">
+                <h:inputTextarea id="summernote" value="#{adminHomeBean.chapterEdit.content}" />
+                <h:commandButton class="btn btn-primary" value="Submit" action="#{adminHomeBean.updateChapter(adminHomeBean.chapterEdit)}" />
+            </div>
         </h:form>
     </div>
 
     <ui:include src="../../footer.xhtml" />
-
     <script src="../../js/sidebar.js"></script>
 
     <script src="../../js/summernote-bs4.min.js"></script>

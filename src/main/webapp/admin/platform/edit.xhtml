@@ -11,19 +11,13 @@
     <ui:include src="../sidebar.xhtml" />
 
     <div class="page-content">
-        <h1 class="page-title">Add chapter</h1>
-
+        <h1 class="page-title">Edit platform</h1>
         <h:form class="row g-3" id="form">
             <div class="col-auto">
-                <h:selectOneMenu value="#{adminHomeBean.platform.id}" class="form-select">
-                    <f:selectItems value="#{platformDao.platforms}" var="n" itemValue="#{n.id}" itemLabel="#{n.name}" />
-                </h:selectOneMenu>
+                <h:inputText class="form-control" value="#{adminHomeBean.platformEdit.name}" />
             </div>
             <div class="col-auto">
-                <h:inputText value="#{adminHomeBean.chapter.name}" class="form-control" />
-            </div>
-            <div class="col-auto">
-                <h:commandButton class="btn btn-primary" value="Submit" action="#{adminHomeBean.saveChapter(adminHomeBean.chapter, adminHomeBean.platform.id)}" />
+                <h:commandButton class="btn btn-primary" value="Submit" action="#{adminHomeBean.update(adminHomeBean.platformEdit)}" />
             </div>
         </h:form>
     </div>

@@ -26,7 +26,16 @@ public class ChapterDao {
         em.persist(chapter);
     }
 
+    public void update(Chapter chapter) {
+        em.merge(chapter);
+    }
+
     public Chapter getChapter(int id) {
         return em.find(Chapter.class, id);
+    }
+
+    public void delete(Chapter chapter) {
+        chapter = em.merge(chapter);
+        em.remove(chapter);
     }
 }
