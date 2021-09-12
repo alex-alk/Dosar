@@ -3,7 +3,8 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 <h:head>
     <ui:include src="../../header.xhtml" />
     <link href="../../css/summernote-bs4.min.css" rel="stylesheet" />
@@ -11,6 +12,9 @@
 <h:body>
     <ui:include src="../sidebar.xhtml" />
 
+<ui:include src="../login.xhtml"/>
+
+<c:if test="#{loginBean.isAdmin}">
     <div class="page-content">
         <h1 class="page-title">Add chapter</h1>
         <h:form id="form-chapter" method="POST">
@@ -25,7 +29,7 @@
             <h:commandButton class="btn btn-primary" value="Submit" action="#{adminHomeBean.saveChapter(adminHomeBean.chapter, adminHomeBean.platform.id)}" />
         </h:form>
     </div>
-
+</c:if>
     <ui:include src="../../footer.xhtml" />
 
     <script src="../../js/sidebar.js"></script>

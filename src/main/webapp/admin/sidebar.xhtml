@@ -3,7 +3,7 @@
         xmlns:h="http://xmlns.jcp.org/jsf/html"
         xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
         xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
-
+<c:if test="#{loginBean.isAdmin}">
     <aside class="bd-sidebar">
         <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
             <a href="/admin/home" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
@@ -36,4 +36,5 @@
             </ul>
         </div>
     </aside>
+</c:if>
 </ui:composition>

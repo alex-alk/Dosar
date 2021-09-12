@@ -13,3 +13,10 @@ aside .active {
 .note-frame {
     max-width: 750px;
 }
+.login-form {
+    max-width: 350px;
+    margin: 200px auto;
+    padding: 15px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
