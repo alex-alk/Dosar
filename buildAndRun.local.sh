@@ -4,4 +4,4 @@
 
 java -jar ../libs/pm.jar target/ROOT.war --port 80 --sslPort 443 --outputUberJar Dosar.jar
 
-java -jar Dosar.jar --addLibs ../libs/dbc.jar --postbootcommandfile dbc.txt
+java -jar Dosar.jar --addLibs ../libs/dbc.jar --postbootcommandfile dbc_local.txt

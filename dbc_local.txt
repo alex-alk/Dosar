@@ -1,5 +1,5 @@
 create-jdbc-connection-pool --datasourceclassname oracle.jdbc.pool.OracleDataSource --restype javax.sql.DataSource demo-pool
-set resources.jdbc-connection-pool.demo-pool.property.password=password resources.jdbc-connection-pool.demo-pool.property.serverName=localhost resources.jdbc-connection-pool.demo-pool.property.user=c##dosar resources.jdbc-connection-pool.demo-pool.property.URL=jdbc:oracle:thin:@localhost:1521:cdb1
+set resources.jdbc-connection-pool.demo-pool.property.password=cincicinci resources.jdbc-connection-pool.demo-pool.property.serverName=localhost resources.jdbc-connection-pool.demo-pool.property.user=c##dosar resources.jdbc-connection-pool.demo-pool.property.URL=jdbc:oracle:thin:@localhost:1521:cdb1
 
 create-jdbc-resource --enabled=true --poolName=demo-pool --target=domain jdbc/local-db
 create-resource-ref --enabled=true --target=server jdbc/local-db
