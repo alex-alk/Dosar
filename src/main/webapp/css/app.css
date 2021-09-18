@@ -33,3 +33,7 @@ aside .active {
     border: 1px solid lightgray;
     border-radius: 5px;
 }
+#page-logo {
+    color: white;
+    font-size: 27px;
+}
