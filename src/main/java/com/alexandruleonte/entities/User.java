@@ -5,13 +5,18 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "users")
+@NamedQuery(name = User.FIND_BY_USERNAME, query = "select u from User u where u.userName = :userName")
+@NamedQuery(name= User.FIND_ALL, query="SELECT u FROM User u")
 public class User {
 
+    public static final String FIND_BY_USERNAME = "User.findByUserName";
+    public static final String FIND_ALL = "User.findAll";
+
     @Id
-    Integer id;
+    private Integer id;
 
     @NotNull
-    private String name;
+    private String userName;
 
     @NotNull
     private String password;
@@ -20,16 +25,12 @@ public class User {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public String getUserName() {
+        return userName;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setUserName(String name) {
+        this.userName = name;
     }
 
     public String getPassword() {
@@ -39,4 +40,5 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }

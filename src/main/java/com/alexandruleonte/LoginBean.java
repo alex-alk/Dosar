@@ -1,6 +1,11 @@
 package com.alexandruleonte;
 
+import com.alexandruleonte.dao.UserDao;
+import com.alexandruleonte.entities.User;
+import org.mindrot.jbcrypt.BCrypt;
+
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 
@@ -8,36 +13,44 @@ import java.io.Serializable;
 @SessionScoped
 public class LoginBean implements Serializable {
 
-    private String userName;
-    private String password;
     private boolean isAdmin;
 
-    public String getUserName() {
-        return userName;
+    @Inject
+    UserDao userDao;
+
+    private final User user = new User();
+
+    public User getUser() {
+        return user;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+    public String validateUserLogin(User user) {
 
-    public String getPassword() {
-        return password;
-    }
+        String navResult = "/admin/login";
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+        User userDB = userDao.getUserByUserName(user.getUserName());
 
-    public String validateUserLogin() {
+        if (userDB != null) {
 
-        String navResult = "";
-        if (userName.equalsIgnoreCase("admin") && password.equals("admin")) {
-            navResult = "/admin/home";
-            isAdmin = true;
-        } else {
-            navResult = "home";
+            String userPass = encrypt(user.getPassword());
+            if (BCrypt.checkpw(userPass, userDB.getPassword())) {
+                navResult = "/admin/home?faces-redirect=true";
+                isAdmin = true;
+            }
         }
+
         return navResult;
+    }
+
+    public String logout()
+    {
+        isAdmin = false;
+        return "/admin/login?faces-redirect=true";
+    }
+
+    private String encrypt(String t)
+    {
+        return t;
     }
 
     public boolean getIsAdmin() {

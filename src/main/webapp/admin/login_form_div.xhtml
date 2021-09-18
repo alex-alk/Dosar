@@ -1,0 +1,21 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <div class="login-form">
+        <h:form class="g-3" id="form">
+            <div class="mb-3">
+                <h:outputLabel value="Username: " />
+                <h:inputText class="form-control" value="#{loginBean.user.userName}" />
+            </div>
+            <div class="mb-3">
+                <h:outputLabel value="Password: " />
+                <h:inputSecret class="form-control" value="#{loginBean.user.password}" />
+            </div>
+            <h:commandButton class="btn btn-primary" value="Login" action="#{loginBean.validateUserLogin(loginBean.user)}" />
+        </h:form>
+    </div>
+
+</ui:composition>

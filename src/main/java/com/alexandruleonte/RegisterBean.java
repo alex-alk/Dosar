@@ -1,46 +1,41 @@
 package com.alexandruleonte;
 
+import com.alexandruleonte.dao.ChapterDao;
+import com.alexandruleonte.dao.UserDao;
+import com.alexandruleonte.entities.User;
+
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.List;
 
 @Named
 @SessionScoped
 public class RegisterBean implements Serializable {
 
-    private String userName;
-    private String password;
-    private boolean isAdmin;
+    @Inject
+    UserDao userDao;
 
-    public String getUserName() {
-        return userName;
+    private final User user = new User();
+
+    public User getUser() {
+        return user;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public int getUsersCount() {
+        return userDao.getUsers().size();
     }
 
-    public String getPassword() {
-        return password;
-    }
+    // only one user can register
+    public String register(User user) {
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+        List<User> users = userDao.getUsers();
 
-    public String validateUserLogin() {
-
-        String navResult = "";
-        if (userName.equalsIgnoreCase("admin") && password.equals("admin")) {
-            navResult = "/admin/home";
-            isAdmin = true;
-        } else {
-            navResult = "home";
+        if (users.size() == 0) {
+            userDao.save(user);
         }
-        return navResult;
-    }
 
-    public boolean getIsAdmin() {
-        return isAdmin;
+        return "/admin/home?faces-redirect=true";
     }
 }
