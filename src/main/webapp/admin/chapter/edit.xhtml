@@ -7,7 +7,7 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 <h:head>
     <ui:include src="../../head.xhtml" />
-    <link href="../../css/summernote-bs4.min.css" rel="stylesheet" />
+    <link href="../../css/summernote-lite.min.css" rel="stylesheet" />
 </h:head>
 <h:body>
     <ui:include src="../../navbar.xhtml" />
@@ -18,11 +18,11 @@
     <c:if test="#{loginBean.isAdmin}">
     <div class="page-content">
         <h1 class="page-title">Edit chapter</h1>
-        <h:form class="row g-3" id="form-chapter">
-            <div class="col-auto">
-                <h:inputText class="form-control" value="#{adminHomeBean.chapterEdit.name}" />
+        <h:form id="form-chapter">
+            <div class="form-group mb-4">
+                <h:inputText class="form-control input-text" value="#{adminHomeBean.chapterEdit.name}" />
             </div>
-            <div class="col-auto">
+            <div class="form-group">
                 <h:inputTextarea id="summernote" value="#{adminHomeBean.chapterEdit.content}" />
                 <h:commandButton class="btn btn-primary" value="Submit" action="#{adminHomeBean.updateChapter(adminHomeBean.chapterEdit)}" />
             </div>
@@ -32,11 +32,20 @@
     <ui:include src="../../footer.xhtml" />
     <script src="../../js/sidebar.js"></script>
 
-    <script src="../../js/summernote-bs4.min.js"></script>
+    <script src="../../js/summernote-lite.min.js"></script>
     <script>
         $(document).ready(function() {
             $('#form-chapter-summernote').summernote({
-                minHeight: 500
+                minHeight: 500,
+                lineHeights: ['0.2', '0.3', '0.4', '0.5', '0.6', '0.8', '1.0', '1.2', '1.4', '1.5', '2.0', '3.0'],
+                toolbar: [
+                    ['style', ['style', 'bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['fontsize', ['fontname', 'fontsize', 'codeview']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']]
+                  ]
             });
         });
     </script>

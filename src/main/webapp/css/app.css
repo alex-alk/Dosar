@@ -24,7 +24,7 @@ aside .active {
 }
 
 .note-frame {
-    max-width: 750px;
+    max-width: 760px;
 }
 .login-form {
     max-width: 350px;
@@ -36,4 +36,14 @@ aside .active {
 #page-logo {
     color: white;
     font-size: 27px;
+}
+.input-text {
+    max-width: 200px
+}
+.note-editor .dropdown-toggle::after {
+    all: unset;
+}
+
+.note-editor .note-dropdown-menu, .note-editor .note-modal-footer {
+    box-sizing: content-box;
 }
