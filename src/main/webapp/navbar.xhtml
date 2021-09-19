@@ -17,6 +17,7 @@
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">
+                        <h:link rendered="#loginBean.isAdmin}" value="Dashboard" outcome="/admin/home" class="nav-link active" aria-current="page" />
                         <h:form>
                             <h:commandLink rendered="#{loginBean.isAdmin}" value="Logout" action="#{loginBean.logout}" class="nav-link active" aria-current="page" />
                         </h:form>

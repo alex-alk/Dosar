@@ -21,6 +21,8 @@ public class AdminHomeBean implements Serializable {
     PlatformDao platformDao;
     @Inject
     ChapterDao chapterDao;
+    @Inject
+    LoginBean loginBean;
 
     @Param
     private int id;
@@ -39,34 +41,46 @@ public class AdminHomeBean implements Serializable {
     }
 
     public String save(Platform platform) {
-        platformDao.save(platform);
+        if (loginBean.getIsAdmin()) {
+            platformDao.save(platform);
+        }
         return "/admin/platform/list.xhtml?faces-redirect=true";
     }
 
     public String update(Platform platform) {
-        this.editPlatform = platform;
-        platformDao.update(platform);
+        if (loginBean.getIsAdmin()) {
+            this.editPlatform = platform;
+            platformDao.update(platform);
+        }
         return "/admin/platform/list.xhtml?faces-redirect=true";
     }
 
     public String updateChapter(Chapter chapter) {
-        this.editChapter = chapter;
-        chapterDao.update(chapter);
+        if (loginBean.getIsAdmin()) {
+            this.editChapter = chapter;
+            chapterDao.update(chapter);
+        }
         return "/admin/chapter/list.xhtml?faces-redirect=true";
     }
 
     public String delete(Platform platform) {
-        platformDao.delete(platform);
+        if (loginBean.getIsAdmin()) {
+            platformDao.delete(platform);
+        }
         return "/admin/platform/list.xhtml?faces-redirect=true";
     }
 
     public String deleteChapter(Chapter chapter) {
-        chapterDao.delete(chapter);
+        if (loginBean.getIsAdmin()) {
+            chapterDao.delete(chapter);
+        }
         return "/admin/chapter/list.xhtml?faces-redirect=true";
     }
 
     public String saveChapter(Chapter chapter, int platformId) {
-        chapterDao.saveChapter(chapter, platformId);
+        if (loginBean.getIsAdmin()) {
+            chapterDao.saveChapter(chapter, platformId);
+        }
         return "/admin/chapter/list?faces-redirect=true";
     }
 
