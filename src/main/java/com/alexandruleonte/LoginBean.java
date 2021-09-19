@@ -28,10 +28,8 @@ public class LoginBean implements Serializable {
 
         String navResult = "/admin/login";
 
-        User userDB = userDao.getUserByUserName(user.getUserName());
-
-        if (userDB != null) {
-
+        if (userDao.getUsers().size() != 0) {
+            User userDB = userDao.getUserByUserName(user.getUserName());
             String userPass = encrypt(user.getPassword());
             if (BCrypt.checkpw(userPass, userDB.getPassword())) {
                 navResult = "/admin/home?faces-redirect=true";

@@ -20,7 +20,7 @@
                         <h:form>
                             <h:commandLink rendered="#{loginBean.isAdmin}" value="Logout" action="#{loginBean.logout}" class="nav-link active" aria-current="page" />
                         </h:form>
-                        <h:link rendered="#{not loginBean.isAdmin}" value="Login" outcome="/admin/login" class="nav-link active" aria-current="page" />
+                        <h:link rendered="#{not loginBean.isAdmin and registerBean.usersCount != 0}" value="Login" outcome="/admin/login" class="nav-link active" aria-current="page" />
                     </li>
                     <li class="nav-item">
                         <h:link rendered="#{registerBean.usersCount == 0}" value="Register" outcome="/admin/register" class="nav-link active" aria-current="page" />

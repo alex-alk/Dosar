@@ -3,14 +3,10 @@ package com.alexandruleonte.dao;
 import com.alexandruleonte.entities.User;
 import org.mindrot.jbcrypt.BCrypt;
 
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
 import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.security.SecureRandom;
-import java.security.spec.KeySpec;
 import java.util.List;
 
 @Stateless
