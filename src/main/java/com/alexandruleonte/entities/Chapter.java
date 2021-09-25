@@ -17,6 +17,8 @@ public class Chapter {
     public static final String GET_CHAPTERS = "Chapter.getAll";
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sec_gen_chapter")
+    @SequenceGenerator(sequenceName = "chapters_seq", allocationSize = 1, name = "sec_gen_chapter")
     Integer id;
 
     @ManyToOne()

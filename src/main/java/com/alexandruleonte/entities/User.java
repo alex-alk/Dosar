@@ -13,6 +13,8 @@ public class User {
     public static final String FIND_ALL = "User.findAll";
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sec_gen_user")
+    @SequenceGenerator(sequenceName = "users_seq", allocationSize = 1, name = "sec_gen_user")
     private Integer id;
 
     @NotNull

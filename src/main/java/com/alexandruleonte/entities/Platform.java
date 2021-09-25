@@ -19,6 +19,8 @@ public class Platform {
     private Collection<Chapter> chapters = new ArrayList<>();
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sec_gen_platform")
+    @SequenceGenerator(sequenceName = "platforms_seq", allocationSize = 1, name = "sec_gen_platform")
     Integer id;
 
     @NotNull
