@@ -21,6 +21,7 @@
             <thead>
                 <tr>
                     <td>Name</td>
+                    <td>Platform</td>
                     <td>Action</td>
                 </tr>
             </thead>
@@ -29,6 +30,7 @@
             <ui:repeat value="#{chapterDao.chapters}" var="chapter">
                 <tr>
                     <td>#{chapter.name}</td>
+                    <td>#{chapter.platform.name}</td>
                     <td>
                         <h:link class="btn btn-primary" value="Edit" outcome="/admin/chapter/edit">
                             <f:param name="id" value="#{chapter.id}" />
