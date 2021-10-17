@@ -1,25 +1,31 @@
 <aside class="bd-sidebar">
   <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
-    <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
-      <span class="fs-5 fw-semibold">Dosar</span>
+    <a href="/admin/home" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+      <span class="fs-5 fw-semibold">Admin Dashboard</span>
     </a>
     <ul class="list-unstyled ps-0">
-
-      <!--ui:repeat value="#{platformDao.platforms}" var="platform"-->
-        <li class="mb-1">
-          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse-platform.id" id="btn-collapse-platform.id" aria-expanded="false">
-            platform.name
-          </button>
-          <div class="collapse" id="home-collapse-platform.id">
-            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <!--ui:repeat value="#{platform.chapters}" var="chapter"-->
-                <li><a href="/chapter/index?id=chapter.id&amp;platform=chapter.platform.id&amp;chapter=#{chapter.urlName}" id="chapter-link-chapter.id" class="link-dark rounded">chapter.name</a></li>
-              <!--/ui:repeat-->
-
-            </ul>
-          </div>
-        </li>
-      <!--/ui:repeat-->
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" id="platforms-btn" data-bs-target="#platforms" aria-expanded="false">
+          Platforms
+        </button>
+        <div class="collapse" id="platforms">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a id="show-platforms-link" href="/admin/platform/list" class="link-dark rounded">Show platforms</a></li>
+            <li><a id="add-platform-link" href="/admin/platform/create" class="link-dark rounded">Add platform</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" id="add-chapter-btn" data-bs-target="#chapters" aria-expanded="false">
+          Chapters
+        </button>
+        <div class="collapse" id="chapters">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a id="show-chapters-link" href="/admin/chapter/list.xhtml" class="link-dark rounded">Show chapters</a></li>
+            <li><a id="add-chapters-link" href="/admin/chapter/create.xhtml" class="link-dark rounded">Add chapter</a></li>
+          </ul>
+        </div>
+      </li>
     </ul>
   </div>
 </aside>

@@ -1,5 +1,6 @@
 package com.alexandruleonte.entities;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -21,6 +22,7 @@ public class Chapter {
     @SequenceGenerator(sequenceName = "chapters_seq", allocationSize = 1, name = "sec_gen_chapter")
     Integer id;
 
+    @JsonbTransient
     @ManyToOne()
     @JoinColumn(name = "PLATFORM_ID")
     private Platform platform;
