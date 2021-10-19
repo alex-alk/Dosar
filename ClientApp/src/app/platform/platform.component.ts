@@ -6,8 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./platform.component.scss']
 })
 export class PlatformComponent implements OnInit {
-  public show: string = "show"
-
   constructor() { }
 
   ngOnInit(): void {
