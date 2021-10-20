@@ -8,6 +8,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PlatformComponent } from './platform/platform.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PlatformCreateComponent } from './platform-create/platform-create.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     NavbarComponent,
     SidebarComponent,
     PlatformComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    PlatformCreateComponent
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,30 @@
-<p>platforms works!</p>
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+
+<div class="page-content">
+  <h1 class="page-title">Platforms</h1>
+
+  <table>
+    <thead>
+    <tr>
+      <td>Name</td>
+      <td>Action</td>
+    </tr>
+    </thead>
+    <tbody>
+
+
+      <tr *ngFor="let platform of result">
+        <td>{{ platform.name }}</td>
+        <td>
+          <a class="btn btn-primary" href="/admin/platform/edit">Edit</a>
+          <form style="display: inline">
+            <button class="btn btn-danger" type="submit">Delete</button>
+          </form>
+        </td>
+      </tr>
+
+
+    </tbody>
+  </table>
+</div>
