@@ -25,7 +25,7 @@ export class PlatformComponent implements OnInit {
 
   }
 }
-interface Platform {
+export interface Platform {
   id: number,
   chapters: Chapter[];
   name: string;

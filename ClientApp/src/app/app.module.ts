@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PlatformComponent } from './platform/platform.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PlatformCreateComponent } from './platform-create/platform-create.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,12 +18,13 @@ import { PlatformCreateComponent } from './platform-create/platform-create.compo
     SidebarComponent,
     PlatformComponent,
     PageNotFoundComponent,
-    PlatformCreateComponent
+    PlatformCreateComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
