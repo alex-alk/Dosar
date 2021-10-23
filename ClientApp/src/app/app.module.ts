@@ -9,7 +9,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { PlatformComponent } from './platform/platform.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PlatformCreateComponent } from './platform-create/platform-create.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PlatformEditComponent } from './platform/platform-edit.component';
+import { ChapterListComponent } from './chapter/chapter-list.component';
 
 @NgModule({
   declarations: [
@@ -19,12 +21,15 @@ import { ReactiveFormsModule } from '@angular/forms';
     PlatformComponent,
     PageNotFoundComponent,
     PlatformCreateComponent,
+    PlatformEditComponent,
+    ChapterListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

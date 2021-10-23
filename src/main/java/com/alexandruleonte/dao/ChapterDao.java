@@ -20,8 +20,8 @@ public class ChapterDao {
         return em.createNamedQuery(Chapter.GET_CHAPTERS, Chapter.class).getResultList();
     }
 
-    public void saveChapter(Chapter chapter, int platformId) {
-        Platform platform = em.find(Platform.class, platformId);
+    public void save(Chapter chapter) {
+        Platform platform = em.find(Platform.class, chapter.getPlatform().getId());
         chapter.setPlatform(platform);
         em.persist(chapter);
     }

@@ -7,7 +7,7 @@ import { environment } from './environments/environment';
 
 export function getBaseUrl() {
   //return document.getElementsByTagName('base')[0].href;
-  return "http://localhost:8081/api/";
+  return "http://localhost:8081";
 }
 
 const providers = [

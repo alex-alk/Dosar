@@ -77,9 +77,9 @@ public class AdminHomeBean implements Serializable {
         return "/admin/chapter/list.xhtml?faces-redirect=true";
     }
 
-    public String saveChapter(Chapter chapter, int platformId) {
+    public String saveChapter(Chapter chapter) {
         if (loginBean.getIsAdmin()) {
-            chapterDao.saveChapter(chapter, platformId);
+            chapterDao.save(chapter);
         }
         return "/admin/chapter/list?faces-redirect=true";
     }

@@ -2,8 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Platform } from '../platform/platform.component';
-//import Platform from '../platform/platform.component';
+import { Platform } from '../platform/Platform';
 
 @Component({
   selector: 'app-platform-create',
@@ -15,9 +14,9 @@ export class PlatformCreateComponent implements OnInit {
   constructor(private http: HttpClient,
     @Inject('BASE_URL') private baseUrl: string,
     private activatedRoute: ActivatedRoute,
-    private router: Router,) { }
+    private router: Router) { }
 
-  platform: Platform = <Platform>{};;
+  platform: Platform = <Platform>{};
 
   platformForm = new FormGroup({
     name: new FormControl('')
@@ -26,22 +25,15 @@ export class PlatformCreateComponent implements OnInit {
 
 
   onSubmit() {
-    // TODO: Use EventEmitter with form value
-    alert("awdawda");
-    console.log("value is:");
-    console.warn(this.platformForm.value);
 
-    var url = this.baseUrl + "api/platforms";
+    var url = this.baseUrl + "/api/platforms";
 
-    
-this.platform.name = this.platformForm.value.name;
+    this.platform.name = this.platformForm.value.name;
 
     this.http
       .post<Platform>(url, this.platform)
       .subscribe(result => {
-        alert("City " + result.id + " has been created.");
-        // go back to cities view
-        this.router.navigate(['/admin/platform']);
+        this.router.navigate(['/admin/platforms']);
       }, error => console.error(error));
   }
 

@@ -1,5 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Platform } from './Platform';
 
 @Component({
   selector: 'app-platform',
@@ -11,28 +14,28 @@ export class PlatformComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    @Inject('BASE_URL') private baseUrl: string) {
-
-      
+    @Inject('BASE_URL') private baseUrl: string,
+    private router: Router) {
   }
+
+
+  deletePlatform(id: number) {
+    var url = this.baseUrl + "/api/platforms/" + id;
+    this.http
+      .delete(url)
+      .subscribe(result => {
+        //this.router.navigate(['/admin/platforms']);
+        this.ngOnInit();
+      }, error => console.error(error));
+  }
+
   ngOnInit() {
 
-    this.http.get<Platform[]>(this.baseUrl + 'platforms').subscribe(result => {
+    this.http.get<Platform[]>(this.baseUrl + '/api/platforms').subscribe(result => {
 
     
       this.result = result;
     }, error => console.error(error));
 
   }
-}
-export interface Platform {
-  id: number,
-  chapters: Chapter[];
-  name: string;
-}
-interface Chapter {
-  id: number,
-  name: string;
-  content: string;
-  urlName: string;
 }
