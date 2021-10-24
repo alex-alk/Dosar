@@ -1,0 +1,22 @@
+<div class="page-content">
+    <h1 class="page-title">Chapters</h1>
+    <table>
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>Platform</td>
+          <td>Action</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let chapter of result">
+          <td>{{ chapter.name }}</td>
+          <td>{{ chapter.platform.name }}</td>
+          <td>
+            <a class="btn btn-primary" [href]="'/admin/chapters/' + chapter.id + '/edit'">Edit</a>
+            <button class="btn btn-danger" (click)="deleteChapter(chapter.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
