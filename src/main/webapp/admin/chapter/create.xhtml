@@ -27,7 +27,7 @@
             </div>
             <h:inputTextarea id="summernote" value="#{adminHomeBean.chapter.content}" />
 
-            <h:commandButton class="btn btn-primary" value="Submit" action="#{adminHomeBean.saveChapter(adminHomeBean.chapter, adminHomeBean.platform.id)}" />
+            <h:commandButton class="btn btn-primary" value="Submit" action="#{adminHomeBean.save(adminHomeBean.chapter, adminHomeBean.platform.id)}" />
         </h:form>
     </div>
 </c:if>

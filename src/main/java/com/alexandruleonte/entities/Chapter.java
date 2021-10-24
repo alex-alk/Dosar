@@ -22,7 +22,7 @@ public class Chapter {
     @SequenceGenerator(sequenceName = "chapters_seq", allocationSize = 1, name = "sec_gen_chapter")
     Integer id;
 
-    @JsonbTransient
+    //@JsonbTransient
     @ManyToOne()
     @JoinColumn(name = "PLATFORM_ID")
     private Platform platform;

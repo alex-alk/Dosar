@@ -16,7 +16,9 @@ public class Platform {
 
     public static final String GET_PLATFORMS = "Platform.getAll";
 
+
     @OneToMany(mappedBy = "platform")
+    @JsonbTransient
     private Collection<Chapter> chapters = new ArrayList<>();
 
     @Id

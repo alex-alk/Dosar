@@ -22,6 +22,9 @@
             <div class="form-group mb-4">
                 <h:inputText class="form-control input-text" value="#{adminHomeBean.chapterEdit.name}" />
             </div>
+            Platform: <h:selectOneMenu value="#{adminHomeBean.platform.id}" class="mb-4">
+            <f:selectItems value="#{platformDao.platforms}" var="n" itemValue="#{n.id}" itemLabel="#{n.name}" />
+        </h:selectOneMenu>
             <div class="form-group">
                 <h:inputTextarea id="summernote" value="#{adminHomeBean.chapterEdit.content}" />
                 <h:commandButton class="btn btn-primary" value="Submit" action="#{adminHomeBean.updateChapter(adminHomeBean.chapterEdit)}" />
