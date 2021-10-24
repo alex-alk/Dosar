@@ -14,6 +14,7 @@ import { PlatformEditComponent } from './platform-list/platform-edit.component';
 import { ChapterListComponent } from './chapter-list/chapter-list.component';
 import { ChapterEditComponent } from './chapter-edit/chapter-edit.component';
 import { ChapterCreateComponent } from './chapter-create/chapter-create.component';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 @NgModule({
   declarations: [
@@ -26,14 +27,15 @@ import { ChapterCreateComponent } from './chapter-create/chapter-create.componen
     PlatformEditComponent,
     ChapterListComponent,
     ChapterEditComponent,
-    ChapterCreateComponent
+    ChapterCreateComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    AngularEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,14 +1,17 @@
 <div class="page-content">
     <h1 class="page-title">Add chapter</h1>
-    <form id="form-chapter" method="POST">
-        Platform: <select class="mb-4">
-            <option value="" *ngFor="let platform of platforms">{{ platform.name }}</option>
+    <form id="form-chapter" (ngSubmit)="onSubmit()" [formGroup]="chapterForm">
+        Platform: <select class="mb-4" formControlName="platform">
+            <option *ngFor="let platform of platforms" [value]="platform.id">{{ platform.name }}</option>
         </select>
         <div class="form-group mb-4">
-            Name: <input type="text" value="">
+            Name: <input type="text" formControlName="name">
         </div>
-        <textarea id="summernote"></textarea>
+        <div style="max-width: 750px; margin-bottom: 10px;">
+            <angular-editor formControlName="htmlContent" [config]="editorConfig"></angular-editor>
+        </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
+
     </form>
 </div>
