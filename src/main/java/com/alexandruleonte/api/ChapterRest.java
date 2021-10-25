@@ -23,19 +23,19 @@ public class ChapterRest {
 
     @GET
     @Path("{id}")
-    public Response getPlatformById(@PathParam("id") int id) {
+    public Response getChapterById(@PathParam("id") int id) {
         return Response.ok(chapterDao.getChapter(id)).build();
     }
 
     @POST
-    public Response createPlatform(Chapter chapter) {
+    public Response createChapter(Chapter chapter) {
         chapterDao.save(chapter);
         return Response.ok().build();
     }
 
     @DELETE
     @Path("{id}")
-    public Response deletePlatform(@PathParam("id") int id) {
+    public Response deleteChapter(@PathParam("id") int id) {
         chapterDao.delete(chapterDao.getChapter(id));
         return Response.ok().build();
     }
