@@ -47,3 +47,10 @@ aside .active {
 .note-editor .note-dropdown-menu, .note-editor .note-modal-footer {
     box-sizing: content-box;
 }
+pre {
+  background-color: rgb(239, 239, 239);
+  padding: 1.2em 1.4em;
+}
+.page-content {
+    max-width: 800px;
+}
