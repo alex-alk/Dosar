@@ -15,6 +15,15 @@ import { ChapterListComponent } from './chapter-list/chapter-list.component';
 import { ChapterEditComponent } from './chapter-edit/chapter-edit.component';
 import { ChapterCreateComponent } from './chapter-create/chapter-create.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { JwtModule } from '@auth0/angular-jwt';
+import { AuthService } from './auth/AuthService';
+import { AuthGuardService } from './auth/AuthGuardService';
+
+export function tokenGetterFn() {
+  return localStorage.getItem('token');
+};
 
 @NgModule({
   declarations: [
@@ -28,6 +37,8 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     ChapterListComponent,
     ChapterEditComponent,
     ChapterCreateComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,9 +46,16 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    AngularEditorModule
+    AngularEditorModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetterFn
+      }
+    })
   ],
-  providers: [],
+  providers: [AuthService, AuthGuardService],
   bootstrap: [AppComponent]
 })
+
+
 export class AppModule { }

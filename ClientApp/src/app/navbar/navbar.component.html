@@ -14,7 +14,8 @@
           <!--<a rendered="#{loginBean.isAdmin}" value="Dashboard" outcome="/admin/home" class="nav-link active" aria-current="page"-->
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link active">Logout</a>
+            <a class="nav-link active"  *ngIf="isAuth" (click)="logout()">Logout</a>
+            <a routerLink="/login" class="nav-link active"  *ngIf="!isAuth">Login</a>
             <!--a rendered="#{loginBean.isAdmin}" value="Logout" action="#{loginBean.logout}" class="nav-link active" aria-current="page"-->
           <!--a rendered="#{not loginBean.isAdmin and registerBean.usersCount != 0}" value="Login" outcome="/admin/login" class="nav-link active" aria-current="page"-->
         </li>

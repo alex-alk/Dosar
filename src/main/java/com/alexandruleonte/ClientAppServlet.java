@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/admin/*")
+@WebServlet(urlPatterns={"/admin/*", "/login", "/register"})
 public class ClientAppServlet  extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request,

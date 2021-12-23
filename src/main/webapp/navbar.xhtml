@@ -17,16 +17,14 @@
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <h:link rendered="#{loginBean.isAdmin}" value="Dashboard" outcome="/admin_op/home" class="nav-link active" aria-current="page" />
+                        <a class="nav-link active hidden logout" href="/admin">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <h:form>
-                            <h:commandLink rendered="#{loginBean.isAdmin}" value="Logout" action="#{loginBean.logout}" class="nav-link active" aria-current="page" />
-                        </h:form>
-                        <h:link rendered="#{not loginBean.isAdmin and registerBean.usersCount != 0}" value="Login" outcome="/admin_op/login" class="nav-link active" aria-current="page" />
+                        <a class="nav-link active hidden logout">Logout</a>
+                        <h:outputLink rendered="#{registerBean.usersCount > 0}" id="login" class="nav-link active hidden" value="/login">Login</h:outputLink>
                     </li>
                     <li class="nav-item">
-                        <h:link rendered="#{registerBean.usersCount == 0}" value="Register" outcome="/admin_op/register" class="nav-link active" aria-current="page" />
+                        <h:outputLink rendered="#{registerBean.usersCount == 0}" value="/register" class="nav-link active" >Register</h:outputLink>
                     </li>
                 </ul>
             </div>

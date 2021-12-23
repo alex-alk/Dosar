@@ -7,15 +7,22 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { PlatformEditComponent } from './platform-list/platform-edit.component';
 import { ChapterListComponent } from './chapter-list/chapter-list.component';
 import { ChapterCreateComponent } from './chapter-create/chapter-create.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { AuthGuardService } from './auth/AuthGuardService';
+import { ChapterEditComponent } from './chapter-edit/chapter-edit.component';
 
 const routes: Routes = [
   //{ path: 'admin', component: AppComponent },
-  { path: 'admin/platforms/create', component: PlatformCreateComponent },
-  { path: 'admin/platforms', component: PlatformComponent },
-  { path: 'admin/platforms/:id/edit', component: PlatformEditComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'admin/platforms/create', component: PlatformCreateComponent, canActivate: [ AuthGuardService ] },
+  { path: 'admin/platforms', component: PlatformComponent, canActivate: [ AuthGuardService ] },
+  { path: 'admin/platforms/:id/edit', component: PlatformEditComponent, canActivate: [ AuthGuardService ] },
 
-  { path: 'admin/chapters', component: ChapterListComponent },
-  { path: 'admin/chapters/create', component: ChapterCreateComponent },
+  { path: 'admin/chapters', component: ChapterListComponent, canActivate: [ AuthGuardService ] },
+  { path: 'admin/chapters/:id/edit', component: ChapterEditComponent, canActivate: [ AuthGuardService ] },
+  { path: 'admin/chapters/create', component: ChapterCreateComponent, canActivate: [ AuthGuardService ] },
   { path: '**', component: PageNotFoundComponent }
 ];
 

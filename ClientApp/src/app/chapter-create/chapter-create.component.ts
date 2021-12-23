@@ -82,8 +82,6 @@ export class ChapterCreateComponent implements OnInit {
     this.chapter.content = this.chapterForm.value.htmlContent;
     this.chapter.platform = {id: this.chapterForm.value.platform, name: ''};
 
-    console.log(this.chapter);
-
     this.http
       .post<Platform>(url, this.chapter)
       .subscribe(result => {
