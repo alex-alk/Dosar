@@ -11,9 +11,10 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthGuardService } from './auth/AuthGuardService';
 import { ChapterEditComponent } from './chapter-edit/chapter-edit.component';
+import { AdminHomeComponent } from './admin-home/admin-home.component';
 
 const routes: Routes = [
-  //{ path: 'admin', component: AppComponent },
+  { path: 'admin', component: AdminHomeComponent, canActivate: [ AuthGuardService ]  },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'admin/platforms/create', component: PlatformCreateComponent, canActivate: [ AuthGuardService ] },

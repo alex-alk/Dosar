@@ -20,6 +20,7 @@ import { RegisterComponent } from './register/register.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AuthService } from './auth/AuthService';
 import { AuthGuardService } from './auth/AuthGuardService';
+import { AdminHomeComponent } from './admin-home/admin-home.component';
 
 export function tokenGetterFn() {
   return localStorage.getItem('token');
@@ -39,6 +40,7 @@ export function tokenGetterFn() {
     ChapterCreateComponent,
     LoginComponent,
     RegisterComponent,
+    AdminHomeComponent,
   ],
   imports: [
     BrowserModule,

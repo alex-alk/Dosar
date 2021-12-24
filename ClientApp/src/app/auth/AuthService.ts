@@ -29,7 +29,7 @@ export class AuthService {
             localStorage.setItem('token', tokenResult);
             this.user = new User();
             this.user.username = userCreds.username;
-            this.router.navigate(['admin/platforms']).then(() => {
+            this.router.navigate(['admin']).then(() => {
                 window.location.reload();
               });;
         });
