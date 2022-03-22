@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.ArrayList;
 import java.util.List;
 
 @Stateless
@@ -32,6 +33,13 @@ public class UserDao {
     }
 
     public List<User> getUsers() {
-        return em.createNamedQuery(User.FIND_ALL, User.class).getResultList();
+        List<User> users = new ArrayList<>();
+
+        try {
+            users  = em.createNamedQuery(User.FIND_ALL, User.class).getResultList();
+        } catch (Exception e) {
+            System.out.println("error in userDao");
+        }
+        return users;
     }
 }

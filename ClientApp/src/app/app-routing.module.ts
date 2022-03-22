@@ -16,7 +16,7 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
 const routes: Routes = [
   { path: 'admin', component: AdminHomeComponent, canActivate: [ AuthGuardService ]  },
   { path: 'login', component: LoginComponent },
-  { path: 'register/', component: RegisterComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'admin/platforms/create', component: PlatformCreateComponent, canActivate: [ AuthGuardService ] },
   { path: 'admin/platforms', component: PlatformComponent, canActivate: [ AuthGuardService ] },
   { path: 'admin/platforms/:id/edit', component: PlatformEditComponent, canActivate: [ AuthGuardService ] },
@@ -28,7 +28,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(
+      routes,
+    )
+  ],
+  exports: [
+    RouterModule
+  ]
 })
 export class AppRoutingModule { }
