@@ -6,8 +6,13 @@ import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
 export function getBaseUrl() {
-  //return document.getElementsByTagName('base')[0].href;
-  return "https://www.alexandruleonte.com";
+  // return document.getElementsByTagName('base')[0].href;
+  //return "https://www.alexandruleonte.com";
+  if (environment.production) {
+    return "https://www.alexandruleonte.com";
+  } else {
+    return "http://localhost";
+  }
 }
 
 const providers = [
