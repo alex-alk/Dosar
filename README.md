@@ -1,11 +1,7 @@
 #Setup
-- Install database
-
-Run migrations:
->abc
-
-Run:
->java -jar file.jar --addLibs C:\Users\Alex\Documents\Projects\Java\JEE\libs\dbc.jar --postbootcommandfile C:\Users\Alex\Documents\Projects\Java\JEE\Dosar\dbc_local.txt
+- Install oracle database
+- Create schema "dosar"
+- Run: build.sh and run.sh
 
 Angular:
 >ng build --deploy-url=/client-app/
