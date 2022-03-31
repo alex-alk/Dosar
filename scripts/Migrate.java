@@ -1,0 +1,103 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class Migrate {
+	private static Connection connection;
+	
+    public static void main(String[] args) {
+    	
+    	if (args.length == 2) {
+    		if (args[0].equals("make")) {
+    			System.out.println("Creating migration file...");
+    			String name = args[1] + "_" +System.currentTimeMillis();
+    			if(createFile(name)) {
+    				writeToFile(name);
+    			}
+    		} else {
+    			System.out.println("The first argument should be 'make'");
+    		}
+    	} else {
+    		if (args.length == 1 && args[0].equals("migrate")) {
+    			System.out.println("Migrating...");
+    			setConnection();
+    			String[] classNames = getFileNames();
+    	        for (var className : classNames) {
+    	        	className = className.substring(0, className.length() - 5);
+    	        	if (!className.equals("compile-al") && !className.substring(className.length() - 1).equals(".")) {
+        	        	System.out.println(className);
+        	        	try {
+        	        		Class<?> clazz = Class.forName(className);
+        	        		clazz.getMethod("run").invoke(null);
+        	        	} catch (Exception e) {
+                            e.printStackTrace();
+        	        	}
+    	        	}
+    	        }
+    	        System.out.println("Migration finished");
+    		}
+    	}
+    }
+    
+    private static String[] getFileNames() {
+        File f = new File("migrations");
+        return f.list();
+    }
+    
+    private static boolean createFile(String name) {
+    	boolean isCreated = false;
+    	try {
+			File file = new File("migrations/" + name + ".java");
+			if (file.createNewFile()) {
+				System.out.println("File created: " + file.getName());
+				isCreated = true;
+			} else {
+				System.out.println("File already exists.");
+			}
+	    } catch (IOException e) {
+	    	System.out.println("An error occurred.");
+	    }
+    	return isCreated;
+    }
+    private static void writeToFile(String name) {
+    	try {
+            FileWriter myWriter = new FileWriter("migrations/" + name + ".java");
+            myWriter.write("import java.sql.Connection;" + "\n");
+            myWriter.write("import java.sql.SQLException;" + "\n");
+            myWriter.write("import java.sql.Statement;" + "\n\n");
+            myWriter.write("public class " + name + "{\n");
+            myWriter.write("    public static void run() {\n");
+            myWriter.write("        Connection con = Migrate.getConnection();\n");
+    		myWriter.write("        try {\n");
+            myWriter.write("            Statement stmt = con.createStatement();\n");
+            myWriter.write("            stmt.execute(\"\");\n");
+            myWriter.write("            stmt.close();\n");
+            myWriter.write("            con.close();\n");
+            myWriter.write("        } catch (Exception e) {\n");
+            myWriter.write("            e.printStackTrace();\n");
+            myWriter.write("        }\n");
+            myWriter.write("    }\n");
+            myWriter.write("}");
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+        }
+    }
+    
+    public static void setConnection() {
+        connection = null;
+        try {
+        	connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.1.6:1521/xepdb1", "dosar", "password");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public static Connection getConnection() {
+    	return connection;
+    }
+}

@@ -1,1 +1,1 @@
-javac *.java
+javac -cp ../;. *.java
