@@ -1,1 +1,2 @@
-javac -cp ../;. *.java
+javac -cp ../:. *.java
+$SHELL

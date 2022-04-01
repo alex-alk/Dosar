@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Migrate {
 	private static Connection connection;
@@ -27,16 +28,22 @@ public class Migrate {
     			String[] classNames = getFileNames();
     	        for (var className : classNames) {
     	        	className = className.substring(0, className.length() - 5);
-    	        	if (!className.equals("compile-al") && !className.substring(className.length() - 1).equals(".")) {
+    	        	if (!className.equals("compile-a") && !className.substring(className.length() - 1).equals(".")) {
         	        	System.out.println(className);
         	        	try {
         	        		Class<?> clazz = Class.forName(className);
         	        		clazz.getMethod("run").invoke(null);
+        	        		insertMigration(className);
         	        	} catch (Exception e) {
                             e.printStackTrace();
         	        	}
     	        	}
     	        }
+    	        try {
+        			connection.close();
+        		} catch (SQLException e) {
+        			e.printStackTrace();
+        		}
     	        System.out.println("Migration finished");
     		}
     	}
@@ -75,7 +82,6 @@ public class Migrate {
             myWriter.write("            Statement stmt = con.createStatement();\n");
             myWriter.write("            stmt.execute(\"\");\n");
             myWriter.write("            stmt.close();\n");
-            myWriter.write("            con.close();\n");
             myWriter.write("        } catch (Exception e) {\n");
             myWriter.write("            e.printStackTrace();\n");
             myWriter.write("        }\n");
@@ -88,10 +94,18 @@ public class Migrate {
         }
     }
     
+    private static void insertMigration(String name) throws SQLException {
+    	Statement stmt = connection.createStatement();
+        stmt.execute(
+    		"INSERT INTO migrations (migration) VALUES ('" + name +"')"
+		);
+        stmt.close();
+    }
+    
     public static void setConnection() {
         connection = null;
         try {
-        	connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.1.6:1521/xepdb1", "dosar", "password");
+        	connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.1.5:1521/xepdb1", "dosar", "password");
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

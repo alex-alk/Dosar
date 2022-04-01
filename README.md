@@ -2,6 +2,7 @@
 - Install oracle database
 - Create schema/user "dosar"
 - Copy persistence_local.xml as persistence.xml
+- Install git (need git bash)
 - In scripts run: migrate.sh
 - Run: build.sh and run.sh
 --------------------------
@@ -15,6 +16,6 @@ How to make a migration file:
 >java Migrate make create_someting_table
 
 - edit the file created and:
->compile-all.bat
+>compile-all.sh
 
 >migrate.sh

@@ -13,14 +13,15 @@ public class User {
     public static final String FIND_ALL = "User.findAll";
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sec_gen_user")
-    @SequenceGenerator(sequenceName = "users_seq", allocationSize = 1, name = "sec_gen_user")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @NotNull
+    @Column(length = 100)
     private String username;
 
     @NotNull
+    @Column(length = 100)
     private String password;
 
     public Integer getId() {
