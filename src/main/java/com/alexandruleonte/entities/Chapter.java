@@ -27,6 +27,7 @@ public class Chapter {
     private Platform platform;
 
     @NotEmpty(message = "Name must be set")
+    @Column(length = 100)
     private String name;
 
     @NotNull

@@ -3,8 +3,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Migrate {
 	private static Connection connection;
@@ -14,7 +17,7 @@ public class Migrate {
     	if (args.length == 2) {
     		if (args[0].equals("make")) {
     			System.out.println("Creating migration file...");
-    			String name = args[1] + "_" +System.currentTimeMillis();
+    			String name = "Migration_" + System.currentTimeMillis() + "_" + args[1];
     			if(createFile(name)) {
     				writeToFile(name);
     			}
@@ -26,16 +29,18 @@ public class Migrate {
     			System.out.println("Migrating...");
     			setConnection();
     			String[] classNames = getFileNames();
+	        	List<String> migrations = getMigrations();
     	        for (var className : classNames) {
     	        	className = className.substring(0, className.length() - 5);
     	        	if (!className.equals("compile-a") && !className.substring(className.length() - 1).equals(".")) {
-        	        	System.out.println(className);
-        	        	try {
-        	        		Class<?> clazz = Class.forName(className);
-        	        		clazz.getMethod("run").invoke(null);
-        	        		insertMigration(className);
-        	        	} catch (Exception e) {
-                            e.printStackTrace();
+        	        	if (!migrations.contains(className)) {
+        	        		try {
+            	        		Class<?> clazz = Class.forName(className);
+            	        		clazz.getMethod("run").invoke(null);
+            	        		insertMigration(className);
+            	        	} catch (Exception e) {
+                                e.printStackTrace();
+            	        	}
         	        	}
     	        	}
     	        }
@@ -45,6 +50,8 @@ public class Migrate {
         			e.printStackTrace();
         		}
     	        System.out.println("Migration finished");
+    		} else {
+    			System.out.println("Command not found");
     		}
     	}
     }
@@ -94,6 +101,22 @@ public class Migrate {
         }
     }
     
+    private static List<String> getMigrations() {
+    	List<String> list = new ArrayList<>();
+    	try {
+        	Statement stmt = connection.createStatement();
+        	stmt.execute("SELECT * from migrations");
+        	ResultSet results = stmt.getResultSet();
+        	while (results.next()) {
+        		list.add(results.getString("migration"));
+        	}
+        	results.close();
+        	stmt.close();
+    	} catch(SQLException e) {
+    	}
+    	return list;
+    }
+    
     private static void insertMigration(String name) throws SQLException {
     	Statement stmt = connection.createStatement();
         stmt.execute(
@@ -105,7 +128,7 @@ public class Migrate {
     public static void setConnection() {
         connection = null;
         try {
-        	connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.1.5:1521/xepdb1", "dosar", "password");
+        	connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.1.6:1521/xepdb1", "dosar", "password");
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

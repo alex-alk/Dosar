@@ -2,7 +2,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class create_migrations_table_1648749285539{
+public class Migration_1648749285539_create_migrations_table{
     public static void run() {
         Connection con = Migrate.getConnection();
         try {

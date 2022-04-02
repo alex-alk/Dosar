@@ -1,3 +1,8 @@
+.idea
+.settings
+.classpath
+nb-configuration.xml
+.project
 /target
 pm.jar
 Dosar.jar
