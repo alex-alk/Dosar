@@ -2,7 +2,7 @@
 - Install oracle database
 - Create schema/user "dosar"
 - Copy persistence_local.xml as persistence.xml
-- Copy db_ip_local.txt as db_ip.txt in /scripts/ 
+- Copy db_local.txt as db.txt in /scripts/ 
 - Install git (need git bash)
 - In scripts run: migrate.sh
 - Run: build.sh and run.sh
