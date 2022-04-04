@@ -128,7 +128,7 @@ public class Migrate {
     public static void setConnection() {
         connection = null;
         try {
-        	connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.1.6:1521/xepdb1", "dosar", "password");
+        	connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.1.5:1521/xepdb1", "dosar", "password");
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

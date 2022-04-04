@@ -9,7 +9,7 @@ public class Migration_1648749285539_create_migrations_table{
             Statement stmt = con.createStatement();
             stmt.execute(
         		"CREATE TABLE migrations (" +
-            		"id INT GENERATED ALWAYS AS IDENTITY," +
+            		"id NUMBER(10, 0) GENERATED ALWAYS AS IDENTITY," +
             		"migration VARCHAR2(100) NOT NULL" +
         		")"
     		);
