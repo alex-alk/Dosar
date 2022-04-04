@@ -8,4 +8,4 @@ pm.jar
 Dosar.jar
 dbc.txt
 certs/
-/src/main/resources/META-INF/persistence.xml
+src/main/resources/META-INF/persistence.xml
