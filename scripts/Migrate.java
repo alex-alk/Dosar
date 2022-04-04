@@ -1,6 +1,8 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -127,8 +129,9 @@ public class Migrate {
     
     public static void setConnection() {
         connection = null;
+        String ip = getIP();
         try {
-        	connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.1.5:1521/xepdb1", "dosar", "password");
+        	connection = DriverManager.getConnection("jdbc:oracle:thin:@" + ip + ":1521/xepdb1", "dosar", "password");
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -136,5 +139,16 @@ public class Migrate {
     
     public static Connection getConnection() {
     	return connection;
+    }
+    
+    public static String getIP() {
+    	String str = "";
+    	try {
+    		Path fileName = Path.of("db_ip.txt");
+    		str = Files.readString(fileName);
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
+    	return str;
     }
 }
