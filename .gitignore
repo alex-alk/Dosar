@@ -9,3 +9,4 @@ Dosar.jar
 dbc.txt
 certs/
 src/main/resources/META-INF/persistence.xml
+scripts/db_ip.txt
