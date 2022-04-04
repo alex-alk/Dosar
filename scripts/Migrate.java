@@ -1,4 +1,6 @@
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -9,7 +11,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Migrate {
 	private static Connection connection;
@@ -129,9 +133,9 @@ public class Migrate {
     
     public static void setConnection() {
         connection = null;
-        String ip = getIP();
+        Map<String, String> dbc = dbCred();
         try {
-        	connection = DriverManager.getConnection("jdbc:oracle:thin:@" + ip + ":1521/xepdb1", "dosar", "password");
+        	connection = DriverManager.getConnection("jdbc:oracle:thin:@" + dbc.get("IP") + ":1521/xepdb1", dbc.get("USER"), dbc.get("PASSWORD"));
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -141,14 +145,36 @@ public class Migrate {
     	return connection;
     }
     
-    public static String getIP() {
-    	String str = "";
-    	try {
-    		Path fileName = Path.of("db_ip.txt");
-    		str = Files.readString(fileName);
-    	} catch (Exception e) {
-    		e.printStackTrace();
-    	}
-    	return str;
+    public static Map<String, String> dbCred()
+    {
+        Map<String, String> map = new HashMap<String, String>();
+        BufferedReader br = null;
+  
+        try {
+            File file = new File("db.txt");
+            br = new BufferedReader(new FileReader(file));
+            String line = null;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split("=");
+                String name1 = parts[0].trim();
+                String name2 = parts[1].trim();
+                if (!name1.equals("") && !name2.equals(""))
+                    map.put(name1, name2);
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            if (br != null) {
+                try {
+                    br.close();
+                }
+                catch (Exception e) {
+                };
+            }
+        }
+  
+        return map;
     }
 }
