@@ -10,3 +10,4 @@ dbc.txt
 certs/
 src/main/resources/META-INF/persistence.xml
 scripts/db.txt
+run.sh
