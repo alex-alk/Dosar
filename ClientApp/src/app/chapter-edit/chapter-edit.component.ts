@@ -90,10 +90,6 @@ export class ChapterEditComponent implements OnInit {
   ngOnInit(): void {
     this.http.get<Platform[]>(this.baseUrl + '/api/platforms').subscribe(result => {
       this.platforms = result;
-
-      this.chapterForm.patchValue({
-        platform: result[0].id
-      });
     }, error => console.error(error));
 
 
