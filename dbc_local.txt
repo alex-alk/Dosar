@@ -1,5 +1,0 @@
-create-jdbc-connection-pool --datasourceclassname oracle.jdbc.pool.OracleDataSource --restype javax.sql.DataSource demo-pool
-set resources.jdbc-connection-pool.demo-pool.property.password=password resources.jdbc-connection-pool.demo-pool.property.serverName=localhost resources.jdbc-connection-pool.demo-pool.property.user=dosar resources.jdbc-connection-pool.demo-pool.property.URL=jdbc:oracle:thin:@192.168.1.5:1521/xepdb1
-
-create-jdbc-resource --enabled=true --poolName=demo-pool --target=domain jdbc/local-db
-create-resource-ref --enabled=true --target=server jdbc/local-db

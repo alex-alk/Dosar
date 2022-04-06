@@ -1,10 +1,11 @@
 #Setup
 - Install oracle database
 - Create schema/user "dosar"
-- Copy persistence_local.xml as persistence.xml
-- Copy db_local.txt as db.txt in /scripts/ 
+- Copy persistence_public.xml as persistence.xml
+- Copy db_public.txt as db.txt in /scripts/ 
 - Install git (need git bash)
 - In scripts run: migrate.sh
+- Copy run_public.sh as run_sh
 - Run: build.sh and run.sh
 --------------------------
 Angular:

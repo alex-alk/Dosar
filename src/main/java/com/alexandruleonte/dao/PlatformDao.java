@@ -1,8 +1,6 @@
 package com.alexandruleonte.dao;
 
-import com.alexandruleonte.entities.Chapter;
 import com.alexandruleonte.entities.Platform;
-
 import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
@@ -20,7 +18,7 @@ public class PlatformDao {
     }
 
     public void save(Platform platform) {
-        em.persist(platform);
+        em.persist(platform); 
     }
 
     public void update(Platform platform) {

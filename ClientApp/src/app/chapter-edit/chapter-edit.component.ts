@@ -67,9 +67,6 @@ export class ChapterEditComponent implements OnInit {
     uploadWithCredentials: false,
     sanitize: true,
     toolbarPosition: 'top',
-    toolbarHiddenButtons: [
-      ['bold', 'italic'],
-    ]
   };
 
   chapter: Chapter = <Chapter>{};
