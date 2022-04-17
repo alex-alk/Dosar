@@ -16,7 +16,7 @@ public class Migration_1648907348487_create_chapters_table{
             		"PRIMARY KEY(id)," +
             		"CONSTRAINT FK_chapters_PLATFORM_ID " +
             	    "FOREIGN KEY (platform_id) " +
-            	    "REFERENCES platforms (id)" +
+            	    "REFERENCES platforms (id) ON DELETE CASCADE" +
         		")"
     		);
             stmt.close();

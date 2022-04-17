@@ -18,7 +18,7 @@ public class PlatformDao {
     }
 
     public void save(Platform platform) {
-        em.persist(platform); 
+        em.persist(platform);
     }
 
     public void update(Platform platform) {
