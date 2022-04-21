@@ -32,7 +32,7 @@ export class ChapterEditComponent implements OnInit {
     spellcheck: true,
     height: 'auto',
     minHeight: '300px',
-    maxHeight: 'auto',
+    maxHeight: '700px',
     width: 'auto',
     minWidth: '0',
     translate: 'yes',

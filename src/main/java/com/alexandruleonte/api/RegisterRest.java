@@ -30,7 +30,7 @@ public class RegisterRest {
 
         if (users.size() == 0) {
             userDao.save(user);
-            return Response.ok().build();
+            return Response.status(Response.Status.CREATED).build();
         }
         return Response.serverError().build();
     }

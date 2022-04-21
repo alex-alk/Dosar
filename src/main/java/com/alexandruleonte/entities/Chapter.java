@@ -1,12 +1,8 @@
 package com.alexandruleonte.entities;
 
-import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.text.Normalizer;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Locale;
 import java.util.regex.Pattern;
 
@@ -30,7 +26,7 @@ public class Chapter {
     @Column(length = 100)
     private String name;
 
-    @NotNull
+    @NotEmpty(message = "Content is required")
     @Lob
     private String content;
 

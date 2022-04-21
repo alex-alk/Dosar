@@ -1,11 +1,8 @@
 package com.alexandruleonte.entities;
 
-import javax.annotation.ManagedBean;
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Named;
 import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -25,7 +22,7 @@ public class Platform {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
-    @NotNull
+    @NotEmpty(message = "Name is required")
     @Column(length = 100)
     private String name;
 

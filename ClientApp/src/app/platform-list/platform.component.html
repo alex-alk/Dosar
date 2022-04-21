@@ -1,17 +1,17 @@
 <div class="page-content">
   <h1 class="page-title">Platforms</h1>
-  <table>
+  <table class="table table-bordered table-responsive">
     <thead>
       <tr>
         <td>Name</td>
-        <td>Action</td>
+        <td id="action-td">Action</td>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let platform of result">
         <td>{{ platform.name }}</td>
         <td>
-          <a class="btn btn-primary" [href]="'/admin/platforms/' + platform.id + '/edit'">Edit</a>
+          <a class="btn btn-primary" [href]="'/admin/platforms/' + platform.id + '/edit'">Edit</a>&nbsp;
           <button class="btn btn-danger" (click)="deletePlatform(platform.id)">Delete</button>
         </td>
       </tr>

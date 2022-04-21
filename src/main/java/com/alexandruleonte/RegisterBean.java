@@ -1,6 +1,5 @@
 package com.alexandruleonte;
 
-import com.alexandruleonte.dao.ChapterDao;
 import com.alexandruleonte.dao.UserDao;
 import com.alexandruleonte.entities.User;
 
@@ -14,7 +13,9 @@ import java.util.List;
 @SessionScoped
 public class RegisterBean implements Serializable {
 
-    @Inject
+	private static final long serialVersionUID = -5133807455760678359L;
+
+	@Inject
     UserDao userDao;
 
     private final User user = new User();

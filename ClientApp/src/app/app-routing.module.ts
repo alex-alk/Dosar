@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { PlatformComponent } from './platform-list/platform.component';
 import { PlatformCreateComponent } from './platform-create/platform-create.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { PlatformEditComponent } from './platform-list/platform-edit.component';
+import { PlatformEditComponent } from './platform-edit/platform-edit.component';
 import { ChapterListComponent } from './chapter-list/chapter-list.component';
 import { ChapterCreateComponent } from './chapter-create/chapter-create.component';
 import { LoginComponent } from './login/login.component';

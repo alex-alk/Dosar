@@ -1,8 +1,6 @@
 package com.alexandruleonte.api;
 
-import com.alexandruleonte.dao.PlatformDao;
 import com.alexandruleonte.dao.UserDao;
-import com.alexandruleonte.entities.Platform;
 import com.alexandruleonte.entities.User;
 import com.alexandruleonte.security.TokenIssuer;
 import org.mindrot.jbcrypt.BCrypt;

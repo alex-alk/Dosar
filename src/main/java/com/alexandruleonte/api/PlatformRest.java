@@ -30,7 +30,7 @@ public class PlatformRest {
     @POST
     public Response createPlatform(Platform platform) {
         platformDao.save(platform);
-        return Response.ok().build();
+        return Response.status(Response.Status.CREATED).build();
     }
 
     @DELETE

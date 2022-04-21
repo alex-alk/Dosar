@@ -30,7 +30,7 @@ public class ChapterRest {
     @POST
     public Response createChapter(Chapter chapter) {
         chapterDao.save(chapter);
-        return Response.ok().build();
+        return Response.status(Response.Status.CREATED).build();
     }
 
     @DELETE
