@@ -2,7 +2,7 @@
 - Install oracle database
 - Create schema/user "dosar"
 - Copy persistence_public.xml as persistence.xml
-- Copy db_public.txt as db.txt in /scripts/ 
+- Copy scripts/db_public.txt as scripts/db.txt
 - Install git (need git bash)
 - In scripts run: migrate.sh
 - Copy run_public.sh as run_sh
@@ -11,7 +11,6 @@
 Angular:
 >ng build --deploy-url=/client-app/
 
->ng build --base-href // for routing
 ---------------------------
 How to make a migration file:
 - in scripts run:
