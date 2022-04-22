@@ -1,8 +1,15 @@
 package com.alexandruleonte.entities;
 
+
 import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import java.text.Normalizer;
 import java.util.Locale;
 import java.util.regex.Pattern;
@@ -10,15 +17,15 @@ import java.util.regex.Pattern;
 @Entity
 @Table(name = "chapters")
 @NamedQuery(name = Chapter.GET_CHAPTERS, query = "select c from Chapter c")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Chapter {
 
-    public static final String GET_CHAPTERS = "Chapter.getAll";
+	public static final String GET_CHAPTERS = "Chapter.getAll";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
-    @JsonbTransient
     @ManyToOne()
     @JoinColumn(name = "PLATFORM_ID")
     private Platform platform;
@@ -38,7 +45,8 @@ public class Chapter {
     public void setName(String name) {
         this.name = name;
     }
-
+    
+    @JsonbTransient
     public Platform getPlatform() {
         return platform;
     }

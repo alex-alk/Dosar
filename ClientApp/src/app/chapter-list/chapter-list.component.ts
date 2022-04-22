@@ -22,7 +22,6 @@ export class ChapterListComponent implements OnInit {
 
     
       this.result = result;
-      console.log(result);
     }, error => console.error(error));
   }
 

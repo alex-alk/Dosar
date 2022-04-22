@@ -2,6 +2,8 @@ package com.alexandruleonte.dao;
 
 import com.alexandruleonte.entities.Chapter;
 import com.alexandruleonte.entities.Platform;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.ejb.Stateless;
 import javax.inject.Named;
