@@ -1,5 +1,6 @@
 package com.alexandruleonte.entities;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.text.Normalizer;
@@ -17,7 +18,7 @@ public class Chapter {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
-    //@JsonbTransient
+    @JsonbTransient
     @ManyToOne()
     @JoinColumn(name = "PLATFORM_ID")
     private Platform platform;

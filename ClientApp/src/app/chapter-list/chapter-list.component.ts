@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Chapter } from './Chapter';
+import { Platform } from '../platform-list/Platform';
 
 @Component({
   selector: 'app-chapter-list',
@@ -14,14 +14,15 @@ export class ChapterListComponent implements OnInit {
     @Inject('BASE_URL') private baseUrl: string,
     private router: Router) { }
 
-  public result: Chapter[] = [];
+  public result: Platform[] = [];
 
   ngOnInit(): void {
 
-    this.http.get<Chapter[]>(this.baseUrl + '/api/chapters').subscribe(result => {
+    this.http.get<Platform[]>(this.baseUrl + '/api/platforms').subscribe(result => {
 
     
       this.result = result;
+      console.log(result);
     }, error => console.error(error));
   }
 

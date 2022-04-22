@@ -9,14 +9,16 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let chapter of result">
-          <td>{{ chapter.platform.name }}</td>
+        <ng-container *ngFor="let platform of result">
+       	<tr *ngFor="let chapter of platform.chapters">
+          <td>{{ platform.name }}</td>
           <td>{{ chapter.name }}</td>
           <td>
             <a class="btn btn-primary" [href]="'/admin/chapters/' + chapter.id + '/edit'">Edit</a>&nbsp;
             <button class="btn btn-danger" (click)="deleteChapter(chapter.id)">Delete</button>
           </td>
-        </tr>
+         </tr>
+         </ng-container>
       </tbody>
     </table>
   </div>

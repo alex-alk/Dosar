@@ -15,7 +15,6 @@ public class Platform {
 
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "platform", cascade = CascadeType.REMOVE)
-    @JsonbTransient
     private Collection<Chapter> chapters = new ArrayList<>();
 
     @Id
