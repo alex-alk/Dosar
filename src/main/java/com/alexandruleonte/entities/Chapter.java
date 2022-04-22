@@ -5,6 +5,7 @@ import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -49,6 +50,11 @@ public class Chapter {
     @JsonbTransient
     public Platform getPlatform() {
         return platform;
+    }
+    
+    @JsonGetter("platformId")
+    public int getPlatformId() {
+        return this.platform.id;
     }
 
     public void setPlatform(Platform platform) {

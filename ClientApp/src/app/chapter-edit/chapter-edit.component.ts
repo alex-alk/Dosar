@@ -103,7 +103,7 @@ export class ChapterEditComponent implements OnInit {
       this.chapterForm.patchValue({
         name: result.name,
         htmlContent: result.content,
-        platform: result.platform.id
+        platform: result.platformId
       });
 
     }, error => console.error(error));
