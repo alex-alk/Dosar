@@ -2,9 +2,7 @@ package com.alexandruleonte.api;
 
 import com.alexandruleonte.dao.PlatformDao;
 import com.alexandruleonte.entities.Platform;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
 
-import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;

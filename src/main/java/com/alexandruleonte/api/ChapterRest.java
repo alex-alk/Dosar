@@ -1,9 +1,7 @@
 package com.alexandruleonte.api;
 
 import com.alexandruleonte.dao.ChapterDao;
-import com.alexandruleonte.dao.PlatformDao;
 import com.alexandruleonte.entities.Chapter;
-import com.alexandruleonte.entities.Platform;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;

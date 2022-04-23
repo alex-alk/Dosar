@@ -29,7 +29,7 @@ public class LoginRest {
             if (userDao.getUserByUsername(user.getUsername()).size() > 0) {
                 User userDB = userDao.getUserByUsername(user.getUsername()).get(0);
 
-                String userPass = encrypt(user.getPassword());
+                String userPass = user.getPassword();
                 if (BCrypt.checkpw(userPass, userDB.getPassword())) {
                     token = issuer.issueToken(user.getUsername());
                 }
@@ -42,9 +42,5 @@ public class LoginRest {
             return Response.status(Response.Status.UNAUTHORIZED)
                     .build();
         }
-    }
-
-    private String encrypt(String t) {
-        return t;
     }
 }

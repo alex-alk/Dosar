@@ -3,13 +3,10 @@ package com.alexandruleonte.api;
 import com.alexandruleonte.dao.UserDao;
 import com.alexandruleonte.entities.User;
 import com.alexandruleonte.security.TokenIssuer;
-import org.mindrot.jbcrypt.BCrypt;
 
 import javax.inject.Inject;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 

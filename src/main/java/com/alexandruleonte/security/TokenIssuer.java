@@ -12,7 +12,7 @@ import java.util.Date;
 
 @Named
 public class TokenIssuer {
-    public static final long EXPIRY_MINS = 120L;
+    public static final long EXPIRY_MINS = 600L;
     public String issueToken(String username) {
         LocalDateTime expiryPeriod = LocalDateTime.now()
                 .plusMinutes(EXPIRY_MINS);
