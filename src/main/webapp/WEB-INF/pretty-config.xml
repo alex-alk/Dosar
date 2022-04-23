@@ -1,0 +1,15 @@
+<pretty-config xmlns="http://ocpsoft.org/schema/rewrite-config-prettyfaces" 
+  	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  	xsi:schemaLocation="http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd
+  						http://ocpsoft.org/schema/rewrite-config-prettyfaces">
+
+	<url-mapping id="chapter">
+		<pattern value="/chapters/#{id}" />
+		<view-id value="/chapters/index.xhtml" />
+	</url-mapping>
+	<url-mapping id="home">
+		<pattern value="/" />
+		<view-id value="/home.xhtml" />
+	</url-mapping>
+
+</pretty-config>

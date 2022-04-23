@@ -9,8 +9,8 @@
         <ui:include src="../sidebar.xhtml" />
 
         <div class="page-content">
-            <h1 class="page-title mb-4">#{homeBean.chapter.name}</h1>
-            <h:outputText value="#{homeBean.chapter.content}" escape="false" />
+            <h1 class="page-title mb-4">#{homeBean.getChapter(param['id']).name}</h1>
+            <h:outputText value="#{homeBean.getChapter(param['id']).content}" escape="false" />
         </div>
 
         <ui:include src="../footer.xhtml" />
