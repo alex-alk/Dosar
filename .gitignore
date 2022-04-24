@@ -9,6 +9,7 @@ Dosar.jar
 dbc.txt
 certs/
 src/main/resources/META-INF/persistence.xml
+src/main/webapp/WEB-INF/web.xml
 scripts/db.txt
 run.sh
 buildAndRun.sh
