@@ -1,7 +1,7 @@
 package com.alexandruleonte.entities;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,8 +20,8 @@ public class Platform {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
-    @NotEmpty(message = "Name is required")
-    @Column(length = 100)
+    @NotBlank(message = "Name is required")
+    @Column(length = 100, unique = true)
     private String name;
 
     public Integer getId() {

@@ -1,7 +1,7 @@
 package com.alexandruleonte.entities;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "users")
@@ -16,11 +16,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotEmpty(message = "Username is required")
+    @NotBlank(message = "Username is required")
     @Column(length = 100)
     private String username;
 
-    @NotEmpty(message = "Password is required")
+    @NotBlank(message = "Password is required")
     @Column(length = 100)
     private String password;
 

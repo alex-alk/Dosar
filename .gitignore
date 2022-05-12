@@ -13,3 +13,4 @@ src/main/webapp/WEB-INF/web.xml
 scripts/db.txt
 run.sh
 buildAndRun.sh
+flyway.conf

@@ -3,7 +3,7 @@ package com.alexandruleonte.entities;
 
 import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -29,11 +29,11 @@ public class Chapter {
     @JoinColumn(name = "PLATFORM_ID")
     private Platform platform;
 
-    @NotEmpty(message = "Name must be set")
+    @NotBlank(message = "Name must be set")
     @Column(length = 100)
     private String name;
 
-    @NotEmpty(message = "Content is required")
+    @NotBlank(message = "Content is required")
     @Lob
     private String content;
 
