@@ -28,7 +28,8 @@ public class RegisterRest {
         if (users.size() == 0) {
             userDao.save(user);
             return Response.status(Response.Status.CREATED).build();
+        } else {
+            return Response.status(Response.Status.BAD_REQUEST).entity("Maximum 1 user").build();
         }
-        return Response.serverError().build();
     }
 }

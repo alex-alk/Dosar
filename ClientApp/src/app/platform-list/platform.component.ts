@@ -20,13 +20,15 @@ export class PlatformComponent implements OnInit {
 
 
   deletePlatform(id: number) {
-    var url = this.baseUrl + "/api/platforms/" + id;
-    this.http
-      .delete(url)
-      .subscribe(result => {
-        //this.router.navigate(['/admin/platforms']);
-        this.ngOnInit();
-      }, error => console.error(error));
+    if (confirm("Are you sure?")) {
+      var url = this.baseUrl + "/api/platforms/" + id;
+      this.http
+        .delete(url)
+        .subscribe(result => {
+          //this.router.navigate(['/admin/platforms']);
+          this.ngOnInit();
+        }, error => console.error(error));
+    }
   }
 
   ngOnInit() {

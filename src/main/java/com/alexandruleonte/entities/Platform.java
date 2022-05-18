@@ -14,6 +14,7 @@ public class Platform {
     public static final String GET_PLATFORMS = "Platform.getAll";
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "platform", cascade = CascadeType.REMOVE)
+    @OrderBy("name ASC")
     private Collection<Chapter> chapters = new ArrayList<>();
 
     @Id

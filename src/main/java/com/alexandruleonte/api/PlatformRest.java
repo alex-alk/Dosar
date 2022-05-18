@@ -2,10 +2,16 @@ package com.alexandruleonte.api;
 
 import com.alexandruleonte.dao.PlatformDao;
 import com.alexandruleonte.entities.Platform;
+import com.alexandruleonte.service.MapValidationErrorService;
 
 import javax.inject.Inject;
+import javax.validation.*;
 import javax.ws.rs.*;
+import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 @Path("platforms")
 
@@ -13,6 +19,9 @@ public class PlatformRest {
 
     @Inject
     PlatformDao platformDao;
+
+    @Inject
+    MapValidationErrorService errorService;
 
     @GET
     public Response platforms() {
@@ -22,19 +31,35 @@ public class PlatformRest {
     @GET
     @Path("{id}")
     public Response getPlatformById(@PathParam("id") int id) {
-        return Response.ok(platformDao.getPlatform(id)).build();
+        Platform p = platformDao.getPlatform(id);
+        if (p == null) {
+            return Response.status(Response.Status.NOT_FOUND).entity("Platform ID '" + id + "' does not exist").build();
+        }
+        return Response.ok(p).build();
     }
 
     @POST
     public Response createPlatform(Platform platform) {
-        platformDao.save(platform);
+
+        Response errorMap = errorService.getErrorMap(platform);
+        if (errorMap != null) return errorMap;
+
+        try {
+            platformDao.save(platform);
+        } catch (Exception e) {
+            Response.status(Response.Status.BAD_REQUEST).entity("Platform name must be unique").build();
+        }
         return Response.status(Response.Status.CREATED).build();
     }
 
     @DELETE
     @Path("{id}")
     public Response deletePlatform(@PathParam("id") int id) {
-        platformDao.delete(platformDao.getPlatform(id));
+        Platform p = platformDao.getPlatform(id);
+        if (p == null) {
+            return Response.status(Response.Status.NOT_FOUND).entity("Platform ID '" + id + "' does not exist").build();
+        }
+        platformDao.delete(p);
         return Response.ok().build();
     }
 

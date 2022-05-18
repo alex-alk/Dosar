@@ -26,13 +26,15 @@ export class ChapterListComponent implements OnInit {
   }
 
   deleteChapter(id: number) {
-    var url = this.baseUrl + "/api/chapters/" + id;
-    this.http
-      .delete(url)
-      .subscribe(result => {
-        this.router.navigate(['/admin/chapters']);
-        this.ngOnInit();
-      }, error => console.error(error));
+    if (confirm("Are you sure?")) {
+      var url = this.baseUrl + "/api/chapters/" + id;
+      this.http
+        .delete(url)
+        .subscribe(result => {
+          this.router.navigate(['/admin/chapters']);
+          this.ngOnInit();
+        }, error => console.error(error));
+    }
   }
 
 }
