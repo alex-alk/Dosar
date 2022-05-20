@@ -56,6 +56,14 @@ public class ChapterRest {
 
     @PATCH
     public Response editChapter(Chapter chapter) {
+
+        Response errorMap = errorService.getErrorMap(chapter);
+        if (errorMap != null) return errorMap;
+
+        Chapter c = chapterDao.getChapter(chapter.getId());
+        if (c == null) {
+            return Response.status(Response.Status.NOT_FOUND).entity("Chapter ID '" + chapter.getId() + "' does not exist").build();
+        }
         chapterDao.update(chapter);
         return Response.ok().build();
     }

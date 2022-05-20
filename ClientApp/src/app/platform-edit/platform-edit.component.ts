@@ -7,7 +7,6 @@ import { Platform } from './Platform';
 @Component({
   selector: 'app-platform-edit',
   templateUrl: './platform-edit.component.html',
-  styleUrls: ['./platform.component.scss']
 })
 export class PlatformEditComponent implements OnInit {
   constructor(
@@ -21,6 +20,10 @@ export class PlatformEditComponent implements OnInit {
   platformForm = new FormGroup({
     name: new FormControl()
   });
+
+  errors = {
+    name: ''
+  }
 
 
   onSubmit() {
@@ -36,7 +39,7 @@ export class PlatformEditComponent implements OnInit {
       .patch(url, this.platform, httpOptions)
       .subscribe(result => {
         this.router.navigate(['/admin/platforms']);
-      }, error => console.error(error));
+      }, errors => this.errors = errors.error);
   }
 
   ngOnInit() {
@@ -51,7 +54,7 @@ export class PlatformEditComponent implements OnInit {
         name: result.name
       });
 
-    }, error => console.error(error));
+    }, error => this.router.navigate(['/admin/platforms']));
 
   }
 }

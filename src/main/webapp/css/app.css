@@ -60,3 +60,6 @@ pre {
 .nav-link:hover {
     cursor: pointer;
 }
+.sites-wrapper img {
+    max-width: 350px;
+}

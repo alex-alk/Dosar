@@ -21,6 +21,11 @@ export class ChapterCreateComponent implements OnInit {
     private router: Router) {
   }
 
+  errors = {
+    name: '',
+    content: ''
+  }
+
   chapterForm = new FormGroup({
     name: new FormControl(''),
     htmlContent: new FormControl(''),
@@ -79,12 +84,11 @@ export class ChapterCreateComponent implements OnInit {
     this.chapter.content = this.chapterForm.value.htmlContent;
     this.chapter.platform = {id: this.chapterForm.value.platform, name: ''};
 
-	console.log(this.chapter);
     this.http
       .post<Chapter>(url, this.chapter)
       .subscribe(result => {
         this.router.navigate(['/admin/chapters']);
-      }, error => console.error(error));
+      }, errors => this.errors = errors.error);
 
 
   }

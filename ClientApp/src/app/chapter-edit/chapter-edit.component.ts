@@ -21,6 +21,11 @@ export class ChapterEditComponent implements OnInit {
     private router: Router, private route: ActivatedRoute) {
   }
 
+  errors = {
+    name: '',
+    content: ''
+  }
+
   chapterForm = new FormGroup({
     name: new FormControl(''),
     htmlContent: new FormControl(''),
@@ -83,7 +88,7 @@ export class ChapterEditComponent implements OnInit {
       .patch<Chapter>(url, this.chapter)
       .subscribe(result => {
         this.router.navigate(['/admin/chapters']);
-      }, error => console.error(error));
+      }, errors => this.errors = errors.error);
 
 
   }
@@ -106,7 +111,7 @@ export class ChapterEditComponent implements OnInit {
         platform: result.platformId
       });
 
-    }, error => console.error(error));
+    }, error => this.router.navigate(['/admin/chapters']));
 
 
   }

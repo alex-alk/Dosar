@@ -4,11 +4,19 @@
         Platform: <select class="mb-4" formControlName="platform">
             <option *ngFor="let platform of platforms" [value]="platform.id">{{ platform.name }}</option>
         </select>
-        <div class="form-group mb-4">
-            Name: <input type="text" formControlName="name">
+        <div class="mb-3">
+            <label class="d-inline">Name: </label>  
+            <input type="text" 
+                formControlName="name"
+                [ngClass]="{'form-control d-inline w-auto': true,
+                    'is-invalid': errors.name
+                }"
+            >
+            <div class="invalid-feedback">{{errors.name}}</div>
         </div>
         <div style="max-width: 750px; margin-bottom: 10px;">
             <angular-editor formControlName="htmlContent" [config]="editorConfig"></angular-editor>
+            <div class="text-danger">{{errors.content}}</div>
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>

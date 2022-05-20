@@ -22,7 +22,9 @@ export class PlatformCreateComponent implements OnInit {
     name: new FormControl('')
   });
 
-
+  errors = {
+    name: ''
+  }
 
   onSubmit() {
 
@@ -34,7 +36,7 @@ export class PlatformCreateComponent implements OnInit {
       .post<Platform>(url, this.platform)
       .subscribe(result => {
         this.router.navigate(['/admin/platforms']);
-      }, error => console.error(error));
+      }, errors => this.errors = errors.error);
   }
 
   ngOnInit(): void {

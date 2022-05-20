@@ -65,6 +65,13 @@ public class PlatformRest {
 
     @PATCH
     public Response editPlatform(Platform platform) {
+        Response errorMap = errorService.getErrorMap(platform);
+        if (errorMap != null) return errorMap;
+
+        Platform p = platformDao.getPlatform(platform.getId());
+        if (p == null) {
+            return Response.status(Response.Status.NOT_FOUND).entity("Platform ID '" + platform.getId() + "' does not exist").build();
+        }
         platformDao.update(platform);
         return Response.ok().build();
     }

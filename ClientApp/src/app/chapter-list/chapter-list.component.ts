@@ -33,7 +33,7 @@ export class ChapterListComponent implements OnInit {
         .subscribe(result => {
           this.router.navigate(['/admin/chapters']);
           this.ngOnInit();
-        }, error => console.error(error));
+        }, error => this.ngOnInit());
     }
   }
 

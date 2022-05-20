@@ -25,9 +25,8 @@ export class PlatformComponent implements OnInit {
       this.http
         .delete(url)
         .subscribe(result => {
-          //this.router.navigate(['/admin/platforms']);
           this.ngOnInit();
-        }, error => console.error(error));
+        }, error => this.ngOnInit());
     }
   }
 
