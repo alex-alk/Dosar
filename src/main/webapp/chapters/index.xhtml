@@ -8,7 +8,7 @@
         <ui:include src="../navbar.xhtml" />
         <ui:include src="../sidebar.xhtml" />
 
-        <div class="page-content">
+        <div class="page-content chapter-wrapper">
             <h1 class="page-title mb-4">#{homeBean.getChapter(param['id']).name}</h1>
             <h:outputText value="#{homeBean.getChapter(param['id']).content}" escape="false" />
         </div>
