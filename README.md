@@ -5,8 +5,7 @@
 - Copy web_public.xml as web.xml and change ip, etc
 - Copy flyway_public.conf as flyway.conf
 - Run mvn clean flyway:migrate -Dflyway.configFiles=flyway.conf
-- Copy run_public.sh as run.sh
-- Run: build.sh and run.sh
+- Run: run.sh
 --------------------------
 Angular:
 >ng build --deploy-url=/client-app/
