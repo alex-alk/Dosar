@@ -70,7 +70,9 @@ public class PlatformRest {
 
         Platform p = platformDao.getPlatform(platform.getId());
         if (p == null) {
-            return Response.status(Response.Status.NOT_FOUND).entity("Platform ID '" + platform.getId() + "' does not exist").build();
+            Map<String, String> error = new HashMap<>();
+            error.put("name", "Platform ID '" + platform.getId() + "' does not exist");
+            return Response.status(Response.Status.NOT_FOUND).entity(error).build();
         }
         platformDao.update(platform);
         return Response.ok().build();

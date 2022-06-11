@@ -8,6 +8,8 @@ import com.alexandruleonte.service.MapValidationErrorService;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
+import java.util.HashMap;
+import java.util.Map;
 
 @Path("chapters")
 
@@ -62,7 +64,9 @@ public class ChapterRest {
 
         Chapter c = chapterDao.getChapter(chapter.getId());
         if (c == null) {
-            return Response.status(Response.Status.NOT_FOUND).entity("Chapter ID '" + chapter.getId() + "' does not exist").build();
+            Map<String, String> error = new HashMap<>();
+            error.put("name", "Chapter ID '" + chapter.getId() + "' does not exist");
+            return Response.status(Response.Status.NOT_FOUND).entity(error).build();
         }
         chapterDao.update(chapter);
         return Response.ok().build();
