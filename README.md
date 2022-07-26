@@ -1,4 +1,5 @@
-#Setup
+# Java EE with Angular app
+## Setup
 - Install oracle database
 - Create schema/user "dosar"
 - Copy persistence_public.xml as persistence.xml
