@@ -15,11 +15,15 @@ import java.util.Map;
 
 public class ChapterRest {
 
-    @Inject
-    ChapterDao chapterDao;
+    private final ChapterDao chapterDao;
+
+    private final MapValidationErrorService errorService;
 
     @Inject
-    MapValidationErrorService errorService;
+    public ChapterRest(ChapterDao chapterDao, MapValidationErrorService errorService) {
+        this.chapterDao = chapterDao;
+        this.errorService = errorService;
+    }
 
     @GET
     public Response chapters() {

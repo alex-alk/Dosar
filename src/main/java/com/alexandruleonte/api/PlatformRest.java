@@ -17,11 +17,15 @@ import java.util.Set;
 
 public class PlatformRest {
 
-    @Inject
-    PlatformDao platformDao;
+    private final PlatformDao platformDao;
+
+    private final MapValidationErrorService errorService;
 
     @Inject
-    MapValidationErrorService errorService;
+    public PlatformRest(PlatformDao platformDao, MapValidationErrorService errorService) {
+        this.platformDao = platformDao;
+        this.errorService = errorService;
+    }
 
     @GET
     public Response platforms() {

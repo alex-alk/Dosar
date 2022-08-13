@@ -13,11 +13,12 @@ import java.util.List;
 @Path("register")
 public class RegisterRest {
 
-    @Inject
-    UserDao userDao;
+    private final UserDao userDao;
 
     @Inject
-    TokenIssuer issuer;
+    public RegisterRest(UserDao userDao) {
+        this.userDao = userDao;
+    }
 
     // only 1 user
     @POST

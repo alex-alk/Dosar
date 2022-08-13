@@ -13,11 +13,15 @@ import javax.ws.rs.core.Response;
 @Path("authenticate")
 public class LoginRest {
 
-    @Inject
-    UserDao userDao;
+    private final UserDao userDao;
+
+    private final TokenIssuer issuer;
 
     @Inject
-    TokenIssuer issuer;
+    public LoginRest(UserDao userDao, TokenIssuer issuer) {
+        this.userDao = userDao;
+        this.issuer = issuer;
+    }
 
     @POST
     @Produces(MediaType.TEXT_PLAIN)
