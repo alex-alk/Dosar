@@ -70,6 +70,7 @@ pre {
 }
 .page-content {
     max-width: 1200px;
+    min-height: 1000px;
 }
 .chapter-wrapper {
     max-width: 800px;
